@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/registro', [AuthController::class, 'register'])->name('register');
+
+Route::post('/registro' , [AuthController::class, 'registerPost'])->name('register');

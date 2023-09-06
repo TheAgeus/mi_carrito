@@ -12,19 +12,35 @@
 <body>
    
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form action="{{ route('register') }}" method="POST" class="w-50">
+        
+        <form action="{{ route('register') }}" method="post" class="w-50">
+            @csrf
             <h1>Regístrate</h1>
+            @if(Session::has('success'))
+                <div class="alert alert-success mb-4" role="alert">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="mb-4">
                 <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
             </div>
             <div class="mb-4">
                 <label for="exampleInputNombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="exampleInputNombre">
+                <input type="text" name="name" class="form-control" id="exampleInputNombre">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
