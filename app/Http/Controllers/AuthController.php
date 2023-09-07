@@ -6,14 +6,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register() { 
+    public function register() 
+    { 
         return view('register');
     }
 
-    public function registerPost(Request $request) {
+    public function registerPost(Request $request) 
+    {
         
         // Definir reglas de validción
         $rules = [
@@ -47,5 +50,32 @@ class AuthController extends Controller
         $user->password = Hash::make($request->input('pass'));
         $user->save();
         return back()->with('success', 'Register successfully');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function loginPost(Request $request)
+    {
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->pass,
+        ];
+
+        if (Auth::attempt($credentials)) 
+        {
+            return redirect('/home')->with('success', 'Login berhasil');
+        }
+
+        return back()->withErrors('Credenciales inválidas');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }

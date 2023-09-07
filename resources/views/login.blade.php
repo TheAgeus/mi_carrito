@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registro</title>
+    <title>Inicio de Sesión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -13,9 +13,9 @@
    
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
         
-        <form action="{{ route('register') }}" method="post" class="w-50">
+        <form action="{{ route('login') }}" method="post" class="w-50">
             @csrf
-            <h1>Regístrate</h1>
+            <h1>Inicia tus credenciales</h1>
             @if(Session::has('success'))
                 <div class="alert alert-success mb-4" role="alert">
                     {{ Session::get('success') }}
@@ -38,13 +38,8 @@
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
             </div>
-            <div class="mb-4">
-                <label for="exampleInputNombre" class="form-label">Nombre</label>
-                <input type="text" name="name" class="form-control" id="exampleInputNombre">
-            </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
-        </form><div class="">
-        </div>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
