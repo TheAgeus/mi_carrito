@@ -20,19 +20,20 @@ Route::get('/', function () {
 });
 
 
-Route::group(['middleware' => 'guest'], function () {
-    // Rutas para registrarse
-    Route::get('/registro', [AuthController::class, 'register'])->name('register');
-    Route::post('/registro' , [AuthController::class, 'registerPost'])->name('register');
+// Rutas para registrarse
+Route::get('/registro', [AuthController::class, 'register'])->name('register');
+Route::post('/registro' , [AuthController::class, 'registerPost'])->name('register');
 
-    // Rutas para el inicio de sesión
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
-});
+// Rutas para el inicio de sesión
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 
-Route::group(['meddleware' => 'auth'], function () {
+
+Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+
 
 
