@@ -66,7 +66,18 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) 
         {
-            return redirect('/home')->with('success', 'Login berhasil');
+            if(Auth()->user()->role == 'admin')
+            {
+                return redirect()->route('home.admin');
+            }
+            else if(Auth()->user()->role == 'inventarios')
+            {
+                return redirect()->route('home.inventarios');
+            }
+            else
+            {
+                return redirect()->route('home')->with('success', 'Login berhasil');
+            }
         }
 
         return back()->withErrors('Credenciales inválidas');
@@ -76,6 +87,11 @@ class AuthController extends Controller
     {
         Auth::logout();
 
+        return redirect()->route('login');
+    }
+
+    public function logoutGet()
+    {
         return redirect()->route('login');
     }
 }

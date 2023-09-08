@@ -20,10 +20,6 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
             <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                 @csrf
                 @method('DELETE')
@@ -34,6 +30,12 @@
     </nav>
     <div class="container">
         <h1>Bienvenido {{ Auth::user()->name }}</h1>
+        @if(auth()->user()->isAdmin())
+            <h2>Soy un crud</h2>
+        @elseif(auth()->user()-)
+        
+        @endif
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
