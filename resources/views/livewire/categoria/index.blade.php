@@ -54,7 +54,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <input wire:model="name" class="form-control" type="text" placeholder="Nuevo Nombre" aria-label="Agregar">
+                                    <input wire:model="name" class="form-control" type="text" placeholder="{{$categoria->name}}" aria-label="Agregar">
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
