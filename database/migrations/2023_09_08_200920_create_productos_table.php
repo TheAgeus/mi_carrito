@@ -17,8 +17,9 @@ return new class extends Migration
             $table->double('precio_mx');
             $table->string('codigo');
             $table->unsignedBigInteger('stock');
-            $table->unsignedBigInteger('usuario_id');
-            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->string('img_path')->nullable()->default('Question-mark.jpg');
             $table->timestamps();
 
             $table->foreign('usuario_id')->references('id')->on('users');

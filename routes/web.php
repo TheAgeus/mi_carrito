@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
 
 
 /*
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'user-role:user'])->group(function () {
 Route::middleware(['auth', 'user-role:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
     Route::resource('categoria', CategoriaController::class);
+    Route::resource('productos', ProductoController::class);
 });
 
 Route::middleware(['auth', 'user-role:inventarios'])->group(function () {

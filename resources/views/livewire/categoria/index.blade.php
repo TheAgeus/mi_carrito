@@ -21,8 +21,8 @@
                     </div>
                 @endif
                 
-                <input wire:model="name" class="form-control" type="text" placeholder="Agregar Categoría" aria-label="Agregar">
-                <button class="btn btn-outline-success" type="submit">Agregar</button>
+                <input wire:model="name" class="form-control " type="text" placeholder="Agregar Categoría" aria-label="Agregar">
+                <button class="btn btn-outline-success ms-2" type="submit">Agregar</button>
             </form>
         </div>
         <table class="table">
