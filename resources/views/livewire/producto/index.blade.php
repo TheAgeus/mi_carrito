@@ -30,8 +30,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form wire:submit.prevent="save">
-                    <input type="hidden" name="usuario_id" value="{{Auth()->user()->id}}">
+                <form wire:submit.prevent="save({{Auth()->user()->id}})">
                     
                     @if ($errors->any())
                         <ul>
@@ -49,7 +48,7 @@
                     <div class="row">
                         <div class="input-group mb-3 col">
                             <span class="input-group-text">Precio</span>
-                            <input wire:model="precio_mx" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            <input wire:model="precio_mx" step="any" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                         </div>
 
                         <div class="input-group mb-3 col">
@@ -119,7 +118,7 @@
                     <td class="text-center">{{$producto->usuario->name}}</td>
                     <td class="text-center">{{$producto->categoria->name}}</td>
                     <td class="text-center">
-                        <img width="30px" src="{{asset('images/' . $producto->img_path)}}" alt="">
+                        <img width="30px" height="30px" src="{{asset('/storage/images/productos/' . $producto->img_path)}}" alt="">
                     </td>
                     <td style="text-align: right;">
                         <button wire:click="delete({{$producto->id}})" type="button" class="btn btn-outline-danger">Eliminar</button>

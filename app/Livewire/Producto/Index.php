@@ -19,7 +19,6 @@ class Index extends Component
     public $codigo;
     public $categoria_id;
     public $img;
-    public $usuario_id;
 
     use WithPagination;
     use WithFileUploads;
@@ -31,7 +30,9 @@ class Index extends Component
         'precio_mx' => 'required',
         'stock' => 'required',
         'codigo' => 'required',
-        'img' => 'image|mimes:jpeg,png,jpg|max:2048'
+        'img' => 'image|mimes:jpeg,png,jpg|max:2048',
+        'categoria_id' => 'required',
+        
     ];
 
     protected $messages = [
@@ -53,7 +54,7 @@ class Index extends Component
         ]);
     }
 
-    public function save()
+    public function save($usuario_id)
     {
         $this->validate();
 
@@ -68,7 +69,7 @@ class Index extends Component
             'precio_mx' => $this->precio_mx,
             'codigo' => $this->codigo,
             'stock' => $this->stock,
-            'usuario_id' => $this->usuario_id,
+            'usuario_id' => $usuario_id,
             'categoria_id' => $this->categoria_id,
             'img_path' => $img_name,
         ]);
