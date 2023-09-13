@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('img_path')->nullable()->default('Question-mark.jpg');
             $table->timestamps();
 
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('usuario_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->nullOnDelete();
         });
     }
 

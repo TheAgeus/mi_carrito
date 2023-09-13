@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use \App\Models\Producto;
 use \App\Models\Categoria;
+use Illuminate\Support\Facades\File;
 
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Rule;
@@ -81,5 +82,15 @@ class Index extends Component
         ]);
 
         session()->flash('message', 'Producto creado correctamente.');
+    }
+
+    public function delete(Producto $producto)
+    {
+        // Borrar la imagen del almacenamiento
+        File::delete(public_path() . '/storage/images/productos/' . $producto->img_path);
+
+        $producto->delete();
+        session()->flash('message', 'Producto borrado correctamente.');
+
     }
 }

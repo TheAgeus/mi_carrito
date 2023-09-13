@@ -28,7 +28,7 @@
             <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Cerrar Sesión</button>
+                <button class="btn btn-sm" style="color: rgb(173, 3, 3)">Cerrar Sesión</button>
             </form>
             </div>
         </div>

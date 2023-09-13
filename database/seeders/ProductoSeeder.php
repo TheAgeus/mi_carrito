@@ -51,6 +51,60 @@ class ProductoSeeder extends Seeder
                 'codigo_proveedor' => 'testcod03',
                 'proveedor' => 'testproveedor',
                 'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente asdasd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente qwasd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente qwdasdqwd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente qwdasd3qwd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente qwdasdddqwd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
+            ],[
+                'name'=>'Fuente qwdasdq12wd',
+                'categoria_id'=>'5',
+                'precio_mx'=>'700.69',
+                'stock'=>'3',
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
             ],
         ];
         

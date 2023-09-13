@@ -1,6 +1,13 @@
 <div>
 
-    <div class="min-vh-100 d-flex flex-column justify-content-center">
+    <!-- CONTENEDOR PRINCIPAL -->
+
+    <div class="min-vh-100 d-flex flex-column">
+        <div class="row mb-5"></div>
+        <div class="row mb-3"></div>
+       
+        <!-- Mostrar mensajes -->
+
         @if ($errors->any())
             <ul>
                 @foreach ($errors->all() as $error)
@@ -13,6 +20,8 @@
                 {{ session('message') }}
             </div>
         @endif
+
+        <!-- Botón de Agregar Producto -->
 
         <div class="container d-flex justify-content-end p-0">
             <button style="--bs-btn-font-weight: 600;" 
@@ -106,12 +115,14 @@
         </div>
         </div>
 
-
+        <!-- Titulo de la tabla -->
         <div class="d-flex flex-row justify-content-between mb-3">
             <h3>Lista de las productos</h3>
         </div>
-        <table class="table">
-            <thead>
+
+        <!-- TABLA DE PRODUCTOS -->
+        <table class="table ">
+            <thead class="table-dark">
                 <tr>
                 <th class="text-center" scope="col">Código</th>
                 <th class="text-center" scope="col">Nombre</th>
@@ -123,7 +134,7 @@
                 <th class="text-center" scope="col">Proveedor</th>
                 <th class="text-center" scope="col">Precio de Proveedor</th>
                 <th class="text-center" scope="col">Imagen</th>
-                <th style="text-align: right" scope="col">Acciones</th>
+                <th style="text-align: center" scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -134,7 +145,9 @@
                     <td class="text-center">{{$producto->precio_mx}}</td>
                     <td class="text-center">{{$producto->stock}}</td>
                     <td class="text-center">{{$producto->usuario->name}}</td>
-                    <td class="text-center">{{$producto->categoria->name}}</td>
+                    
+                    <td class="text-center">{{$producto->categoria->name ?? '-'}}</td>
+
                     <td class="text-center">{{$producto->codigo_proveedor}}</td>
                     <td class="text-center">{{$producto->proveedor}}</td>
                     <td class="text-center">{{$producto->precio_proveedor}}</td>
@@ -142,7 +155,8 @@
                         <img width="30px" height="30px" src="{{asset('/storage/images/productos/' . $producto->img_path)}}" alt="">
                     </td>
                     <td style="text-align: right;">
-                        <button wire:click="delete({{$producto->id}})" type="button" class="btn btn-outline-danger">Eliminar</button>
+                        <button wire:click="delete({{$producto->id}})" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        <button  type="button" class="btn btn-outline-primary btn-sm">Editar</button>
                     </td>
                 </tr>
                 @endforeach
