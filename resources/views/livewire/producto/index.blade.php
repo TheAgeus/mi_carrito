@@ -39,6 +39,9 @@
                             @endforeach
                         </ul>
                     @endif
+
+                    <h6>Datos de Producto:</h6>
+
                     <div class="input-group mb-3">
                         <span class="input-group-text">Nombre</span>
                         <input wire:model="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -57,15 +60,10 @@
                         </div>
                     </div>
 
-                    
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Codigo</span>
-                        <input wire:model="codigo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    </div>
-
                     <div class="input-group mb-3">
                         <span class="input-group-text">Categoria</span>
                             <select wire:model="categoria_id" class="form-select" aria-label="Default select example">
+                                <option value=""></option>
                                 @foreach ($categorias as $categoria)
                                     <option value="{{$categoria->id}}">{{$categoria->name}}</option>
                                 @endforeach
@@ -73,9 +71,28 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="img" class="form-label">Imagen</label>
+                        <label for="img" class="form-label">Imagen del producto</label>
                         <input wire:model="img" class="form-control" type="file" id="img">
-                      </div>
+                    </div>
+
+
+                    <h6>Datos de Proveedor:</h6>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Codigo de proveedor</span>
+                        <input wire:model="codigo_proveedor" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nombre de proveedor</span>
+                        <input wire:model="proveedor" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Precio de proveedor</span>
+                        <input wire:model="precio_proveedor" step="any" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
 
                     <div class="modal-footer pb-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -96,13 +113,15 @@
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
+                <th class="text-center" scope="col">Código</th>
                 <th class="text-center" scope="col">Nombre</th>
                 <th class="text-center" scope="col">Precio(MX)</th>
-                <th class="text-center" scope="col">Código</th>
                 <th class="text-center" scope="col">Stock</th>
                 <th class="text-center" scope="col">Agregó</th>
                 <th class="text-center" scope="col">Categoría</th>
+                <th class="text-center" scope="col">Código de Proveedor</th>
+                <th class="text-center" scope="col">Proveedor</th>
+                <th class="text-center" scope="col">Precio de Proveedor</th>
                 <th class="text-center" scope="col">Imagen</th>
                 <th style="text-align: right" scope="col">Acciones</th>
                 </tr>
@@ -110,13 +129,15 @@
             <tbody>
                 @foreach ($productos as $producto)
                 <tr>
-                    <th scope="row">{{$producto->id}}</th>
+                    <th class="text-center">{{$producto->id}}</th>
                     <td class="text-center">{{$producto->name}}</td>
                     <td class="text-center">{{$producto->precio_mx}}</td>
-                    <td class="text-center">{{$producto->codigo}}</td>
                     <td class="text-center">{{$producto->stock}}</td>
                     <td class="text-center">{{$producto->usuario->name}}</td>
                     <td class="text-center">{{$producto->categoria->name}}</td>
+                    <td class="text-center">{{$producto->codigo_proveedor}}</td>
+                    <td class="text-center">{{$producto->proveedor}}</td>
+                    <td class="text-center">{{$producto->precio_proveedor}}</td>
                     <td class="text-center">
                         <img width="30px" height="30px" src="{{asset('/storage/images/productos/' . $producto->img_path)}}" alt="">
                     </td>

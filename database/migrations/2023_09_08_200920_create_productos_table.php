@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->float('precio_mx');
-            $table->string('codigo');
             $table->unsignedBigInteger('stock');
             $table->unsignedBigInteger('usuario_id')->nullable();
             $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->string('codigo_proveedor');
+            $table->string('proveedor');
+            $table->float('precio_proveedor');
             $table->string('img_path')->nullable()->default('Question-mark.jpg');
             $table->timestamps();
 

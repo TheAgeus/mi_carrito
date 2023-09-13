@@ -19,6 +19,9 @@ class Index extends Component
     public $codigo;
     public $categoria_id;
     public $img;
+    public $codigo_proveedor;
+    public $proveedor;
+    public $precio_proveedor;
 
     use WithPagination;
     use WithFileUploads;
@@ -29,9 +32,11 @@ class Index extends Component
         'name' => 'required|unique:productos',
         'precio_mx' => 'required',
         'stock' => 'required',
-        'codigo' => 'required',
         'img' => 'image|mimes:jpeg,png,jpg|max:2048',
         'categoria_id' => 'required',
+        'codigo_proveedor' => 'required',
+        'proveedor' => 'required',
+        'precio_proveedor' => 'required'
         
     ];
 
@@ -40,7 +45,6 @@ class Index extends Component
         'name.unique' => 'Ya existe ese producto.',
         'precio_mx.required' => 'Escriba un precio',
         'stock.required' => 'Escriba un stock',
-        'codigo.required' => 'Escriba un codigo',
         'img.image' => 'Suba un archivo de imagen jpeg, png o jpg',
         'img.max' => 'El archivo debe ser menor a 2mb'
     ];
@@ -67,10 +71,12 @@ class Index extends Component
         \App\Models\Producto::create([
             'name' => $this->name,
             'precio_mx' => $this->precio_mx,
-            'codigo' => $this->codigo,
             'stock' => $this->stock,
             'usuario_id' => $usuario_id,
             'categoria_id' => $this->categoria_id,
+            'codigo_proveedor' => $this->codigo_proveedor,
+            'proveedor' => $this->proveedor,
+            'precio_proveedor' => $this->precio_proveedor,
             'img_path' => $img_name,
         ]);
 

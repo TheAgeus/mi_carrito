@@ -15,6 +15,9 @@ class Producto extends Model
         'codigo',
         'stock',
         'usuario_id',
+        'codigo_proveedor',
+        'proveedor',
+        'precio_proveedor',
         'categoria_id',
         'img_path',
     ];
