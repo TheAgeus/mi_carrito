@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\File;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Rule;
 
+use App\Exports\ProductosExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class Index extends Component
 {
 
@@ -163,5 +166,10 @@ class Index extends Component
         $producto->delete();
         session()->flash('message', 'Producto borrado correctamente.');
 
+    }
+
+    public function exportar()
+    {   
+        return Excel::download(new ProductosExport, 'productos.xlsx');
     }
 }

@@ -11,10 +11,16 @@
         <div class="container d-flex justify-content-end p-0">
             <button 
                 style="--bs-btn-font-weight: 600;" 
-                class="btn btn-success " 
+                class="btn btn-success me-3" 
                 data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                     Agregar Producto
+            </button>
+            <button 
+                wire:click="exportar()"
+                style="--bs-btn-font-weight: 600;" 
+                class="btn btn-success">
+                    Exportar a excel
             </button>
         </div>
 
