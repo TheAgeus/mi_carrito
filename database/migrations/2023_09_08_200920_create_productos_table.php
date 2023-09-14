@@ -14,15 +14,18 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->double('precio_mx');
-            $table->string('codigo');
+            $table->float('precio_mx');
             $table->unsignedBigInteger('stock');
-            $table->unsignedBigInteger('usuario_id');
-            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->string('codigo_proveedor');
+            $table->string('proveedor');
+            $table->float('precio_proveedor');
+            $table->string('img_path')->nullable()->default('Question-mark.jpg');
             $table->timestamps();
 
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('usuario_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('categoria_id')->references('id')->on('categorias')->nullOnDelete();
         });
     }
 

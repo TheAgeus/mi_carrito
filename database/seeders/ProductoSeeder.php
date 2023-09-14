@@ -17,32 +17,40 @@ class ProductoSeeder extends Seeder
             [
                 'name'=>'Asus LGTB',
                 'categoria_id'=>'1',
-                'precio_mx'=>'500',
-                'codigo'=>'ae-fe-drs-c-2',
+                'precio_mx'=>'500.69',
                 'stock'=>'5',
-                'usuario_id'=>'2'
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod01',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '450.69'
             ],
             [
                 'name'=>'ASROCK',
                 'categoria_id'=>'1',
-                'precio_mx'=>'554',
-                'codigo'=>'ASEDA-ASDE-ASD',
+                'precio_mx'=>'554.69',
                 'stock'=>'20',
-                'usuario_id'=>'2'
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod02',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '500.69'
             ],[
                 'name'=>'ACOS Disc',
                 'categoria_id'=>'4',
-                'precio_mx'=>'300',
-                'codigo'=>'1233-342-34-',
+                'precio_mx'=>'300.69',
                 'stock'=>'60',
-                'usuario_id'=>'2'
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '290.69'
             ],[
                 'name'=>'Fuente xd',
                 'categoria_id'=>'5',
-                'precio_mx'=>'700',
-                'codigo'=>'23sf-21d3c-c23',
+                'precio_mx'=>'700.69',
                 'stock'=>'3',
-                'usuario_id'=>'2'
+                'usuario_id'=>'2',
+                'codigo_proveedor' => 'testcod03',
+                'proveedor' => 'testproveedor',
+                'precio_proveedor' => '690.69'
             ],
         ];
         

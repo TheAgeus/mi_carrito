@@ -21,11 +21,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('categoria.index')}}">Categorías</a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('productos.index')}}">Productos</a>
+                </li> 
             </ul>
             <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Cerrar Sesión</button>
+                <button class="btn btn-sm" style="color: rgb(173, 3, 3)">Cerrar Sesión</button>
             </form>
             </div>
         </div>
