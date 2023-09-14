@@ -14,12 +14,16 @@ class UserRoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if(Auth::check() && Auth::user()->role == $role)
+        if(in_array(Auth::user()->role, $roles))
         {
-            return $next($request);
+            if(Auth::check())
+            {
+                return $next($request);
+            }
         }
-        return response()->json(["No tienes permiso para acceder a esta página"]);
+        
+        return response()->json(["No tienes permiso para acceder a esta url"]);
     }
 }
