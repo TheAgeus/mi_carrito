@@ -18,14 +18,17 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 
-// Rutas para registrarse (any)
-Route::get('/registro', [AuthController::class, 'register'])->name('register');
-Route::post('/registro' , [AuthController::class, 'registerPost'])->name('register');
+
+
+// Email verification
+Auth::routes([
+    'verify' => true
+]);
+
 
 // Rutas para el inicio de sesión (any)
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -35,21 +38,21 @@ Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'user-role:user'])->group(function () {
+
+
+
+Route::middleware(['auth', 'user-role:user', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'userHome'])->name('home');
 });
 
-Route::middleware(['auth', 'user-role:admin'])->group(function () {
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('home.admin');
-});
 
-Route::middleware(['auth', 'user-role:inventarios'])->group(function () {
-    Route::get('/inventarios/home', [HomeController::class, 'inventariosHome'])->name('home.inventarios');
-});
-
-Route::middleware(['auth', 'user-role:inventarios,admin'])->group(function () {
+Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(function () {
     Route::resource('categoria', CategoriaController::class);
     Route::resource('productos', ProductoController::class);
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
