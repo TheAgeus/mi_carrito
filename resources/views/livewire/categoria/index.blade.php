@@ -20,19 +20,18 @@
             </div>
         @endif
             
-        <div class="d-flex flex-row justify-content-between mb-3">
-
-        <h3>Lista de las categorías</h3>  
-        <form wire:submit="save" class="d-flex mb-2" role="button">
-            @if(Session::has('success'))
-                <div class="alert alert-success mb-3" role="alert">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
-            
-            <input wire:model="name" class="form-control " type="text" placeholder="Agregar Categoría" aria-label="Agregar">
-            <button style="--bs-btn-font-weight: 600;" class="btn btn-success ms-2" type="submit">Agregar</button>
-        </form>
+        <div class="d-flex flex-sm-row flex-column justify-content-between mb-3">
+            <h3>Lista de las categorías</h3>  
+            <form wire:submit="save" class="d-flex mb-2" role="button">
+                @if(Session::has('success'))
+                    <div class="alert alert-success mb-3" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                
+                <input wire:model="name" class="form-control " type="text" placeholder="Agregar Categoría" aria-label="Agregar">
+                <button style="--bs-btn-font-weight: 600;" class="btn btn-success ms-2" type="submit">Agregar</button>
+            </form>
         </div>
         
 
