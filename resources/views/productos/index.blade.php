@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('content')
-
-    @livewire('producto.index')
+    <div class="container">
+        @livewire('producto.index')
+    </div>
 
 @endsection
