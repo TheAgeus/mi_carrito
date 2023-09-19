@@ -9,6 +9,7 @@ class Homeproducto extends Component
 {
 
     public $producto;
+    public $cantidad;
 
     public function mount($producto)
     {
@@ -20,10 +21,9 @@ class Homeproducto extends Component
         return view('livewire.home.homeproducto');
     }
 
-    
 
-    public function addToCart(Producto $producto)
+    public function addToCart()
     {
-        $this->emit('updateCart');
+        $this->dispatch('myEvento', producto: $this->producto, cantidad: $this->cantidad);
     }
 }

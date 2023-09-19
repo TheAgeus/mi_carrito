@@ -3,7 +3,7 @@
         Ver mi carrito <i class="bi bi-cart4" style="color: white; font-size: 1.4rem;"></i>
 
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          {{count($productos)}}
+          {{array_sum($cantidades)}}
           <span class="visually-hidden">unread messages</span>
         </span>
     </button>

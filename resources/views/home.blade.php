@@ -9,19 +9,11 @@
       </button>
       <div class="navbar-collapse collapse" id="navbarColor01" style="">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categorías
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                    @foreach($categorias as $categoria)
-                        <li><a class="dropdown-item" href="#">{{$categoria->name}}</a></li>
-                    @endforeach
-                </ul>
-              </li>
+            @livewire('home.categoriadropdown', ['categorias' => $categorias])
         </ul>
-            <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
-            @livewire('home.carritoicon')
+
+        <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
+        @livewire('home.carritoicon')
             
         <a class="navbar-brand" href=""></a>
         <a class="navbar-brand" href=""></a>

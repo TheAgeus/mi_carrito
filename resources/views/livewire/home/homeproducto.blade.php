@@ -14,8 +14,8 @@
         <div class="container">
             Cantidad a comprar:
             <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="1" aria-label="Recipient's username" >
-                <button wire:click="$emitTo('carritoicon', addToCart({{$producto}}))" class="btn btn-outline-success" type="button">Agregar al carrito</button>
+                <input wire:model="cantidad" type="number" class="form-control" placeholder="" aria-label="Recipient's username" min="1">
+                <button wire:click="addToCart()" class="btn btn-outline-success" type="button">Agregar al carrito</button>
             </div>
         </div>
 
