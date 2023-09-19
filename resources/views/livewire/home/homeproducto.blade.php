@@ -15,7 +15,7 @@
             Cantidad a comprar:
             <div class="input-group mb-3">
                 <input wire:model="cantidad" type="number" class="form-control" placeholder="" aria-label="Recipient's username" min="1">
-                <button wire:click="addToCart()" class="btn btn-outline-success" type="button">Agregar al carrito</button>
+                <button wire:click="addToCart({{Auth()->user()->id}})" class="btn btn-outline-success" type="button">Add to cart</button>
             </div>
         </div>
 

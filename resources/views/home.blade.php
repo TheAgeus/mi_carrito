@@ -13,7 +13,7 @@
         </ul>
 
         <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
-        @livewire('home.carritoicon')
+        @livewire('home.carritoicon', ['usuario_id' => Auth()->user()->id])
             
         <a class="navbar-brand" href=""></a>
         <a class="navbar-brand" href=""></a>

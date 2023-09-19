@@ -35,7 +35,7 @@
         </div>
         
 
-        <table class="table table d-inline">
+        <table class="table table d-inline  table-bordered">
             <thead class="table-dark">
                 <tr>
                 <th>#</th>
