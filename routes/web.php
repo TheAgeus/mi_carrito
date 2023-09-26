@@ -56,3 +56,4 @@ Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(f
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/micarrito', [App\Http\Controllers\CarritoController::class, 'index'])->name('micarrito');

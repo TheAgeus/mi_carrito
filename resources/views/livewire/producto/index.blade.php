@@ -34,7 +34,7 @@
         </div>
 
         <!-- TABLA DE PRODUCTOS -->
-        <div class="table-responsive">
+        <div class="table-responsive table-bordered ">
             <table class="table ">
                 <thead class="table-dark">
                     <tr>

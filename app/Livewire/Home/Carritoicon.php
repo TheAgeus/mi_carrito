@@ -7,28 +7,56 @@ use Livewire\Attributes\On;
 
 
 use \App\Models\Producto;
+use \App\Models\UsuarioCarrito;
 
 
 class Carritoicon extends Component
 {
-    public $productos = array();
-    public $cantidades = array();
 
+    public $cantidad;
+    public $carrito;
 
-    #[On('myEvento')]
-    public function selfUpdateCart($producto, $cantidad)
+    #[On('updateCart')]
+    public function selfUpdateCart($user_id)
     {
-        if ($cantidad == NULL){
-            return;
+        $carrito = UsuarioCarrito::where('usuario_id', $user_id)->get();
+        if (count($carrito) == 0)
+        {
+            $this->cantidad = 0;
         }
-        array_push($this->productos, $producto);
-        array_push($this->cantidades, $cantidad);
+        else 
+        {
+            $cantidad = 0;
+            foreach($carrito as $item)
+            {
+                $cantidad += $item->cantidad;
+                $this->cantidad = $cantidad;
+            }
+
+        }
+        $this->render();
     }
 
-    public function mount()
+    public function mount($usuario_id)
     {
-        $this->productos = array();
-        $this->cantidades = array();
+
+        $carrito = UsuarioCarrito::where('usuario_id', $usuario_id)->get();
+        if (count($carrito) == 0)
+        {
+            $this->cantidad = 0;
+        }
+        else 
+        {
+            $cantidad = 0;
+            foreach($carrito as $item)
+            {
+                
+                $cantidad += $item->cantidad;
+                $this->cantidad = $cantidad;
+            }
+        }
+        $this->render();
+
     }
 
     public function render()
