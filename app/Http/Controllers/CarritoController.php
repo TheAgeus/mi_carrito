@@ -16,4 +16,16 @@ class CarritoController extends Controller
             'carrito' => $carrito
         ]);
     }
+
+    public function item($carritoItemId)
+    {
+        return redirect('micarrito');
+    }
+
+    public function delete($carritoRowId)
+    {
+        UsuarioCarrito::find($carritoRowId)->delete();
+        return redirect()->back();
+    }
+
 }
