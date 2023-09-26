@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
+
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid p-m-0 p-lg-0">
       <a class="navbar-brand" href=""></a>
@@ -21,8 +22,14 @@
     </div>
 </nav>
 
+
+
+
+
 <div class="container">
-    @livewire('home.homeproductos')
+  @livewire('home.homeproductos')
 </div>
+
+
 
 @endsection

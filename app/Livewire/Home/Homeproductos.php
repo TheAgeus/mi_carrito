@@ -29,7 +29,9 @@ class Homeproductos extends Component
         {
             $this->title = Categoria::find($this->categoria_id)->name;
         }
-        return view('livewire.home.homeproductos', ['productos' => Producto::where('categoria_id', $this->categoria_id)->get()]);
+        return view('livewire.home.homeproductos', [
+            'productos' => Producto::where('categoria_id', $this->categoria_id)->get()
+        ]);
     }
 
     #[On('showCat')] // mostrar solo los de esa categoria
@@ -47,5 +49,6 @@ class Homeproductos extends Component
         }
         $this->render();
     }
+
 
 }

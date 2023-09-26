@@ -29,7 +29,7 @@ class Homeproducto extends Component
         $selfItemAmount = UsuarioCarrito::where('usuario_id', $user_id)->sum('cantidad');
 
         if ( $this->cantidad + $selfItemAmount > $this->producto->stock ) {
-            session()->flash('errorToModal', 'El stock es insuficiente para la cantidad que requiere comprar, pruebe otra cantidad');
+            $this->dispatch('alertProduct', msg:'El stock es insuficiente para la cantidad que requiere comprar, pruebe otra cantidad', type: 'bg-danger');
             return;
         }
 
@@ -40,6 +40,6 @@ class Homeproducto extends Component
         ]);
 
         $this->dispatch('updateCart', user_id: $user_id);
-        //$this->dispatch('myEvento', producto: $this->producto, cantidad: $this->cantidad);
+        $this->dispatch('alertProduct', msg: 'Se han añadido ' . $this->cantidad . ' ' . $this->producto->name, type: 'bg-success');
     }
 }
