@@ -9,5 +9,7 @@
         @foreach($productos as $producto)
             @livewire('home.homeproducto', ['producto' => $producto], key('item-'.$producto->id))   
         @endforeach
-      </div>
+    </div>
+
+
 </div>

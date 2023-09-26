@@ -5,6 +5,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
     @endif
+    @if (session()->has('product_added'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{session()->get('product_added')}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    @endif
+
 
     <div class="card">
         <img src="{{asset('/storage/images/productos/' . $producto->img_path)}}" class="img-fluid img-thumbnail" style="height: 300px;" alt="...">
