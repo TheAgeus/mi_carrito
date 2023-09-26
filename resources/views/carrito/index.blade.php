@@ -41,6 +41,17 @@
                     <tr>
                         <td colspan="4" class="text-end border-top fw-bold">TOTAL:</td>
                         <td colspan="1" class="text-end border-top fw-bold text-danger">$ {{$total}} MX</td>
+                        <td colspan="1" class="text-center border-top fw-bold text-danger">
+                            <form action="{{route('deleteAllCarritoItem')}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm"> 
+                                    <strong>
+                                        Borrar todo el carrito
+                                    </strong> 
+                                </button> 
+                            </form>    
+                        </td>
                     </tr>
             </tbody>
           </table>

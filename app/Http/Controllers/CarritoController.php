@@ -28,4 +28,10 @@ class CarritoController extends Controller
         return redirect()->back();
     }
 
+    public function deleteAll()
+    {
+        UsuarioCarrito::where('usuario_id', Auth()->user()->id)->delete();
+        return redirect()->back();
+    }
+
 }

@@ -69,3 +69,5 @@ Route::get('/micarrito', [App\Http\Controllers\CarritoController::class, 'index'
 Route::get('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'item'])->name('showCarritoItem'); 
 
 Route::delete('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'delete'])->name('deleteCarritoItem');
+
+Route::delete('deleteAll/micarrito', [App\Http\Controllers\CarritoController::class, 'deleteAll'])->name('deleteAllCarritoItem');
