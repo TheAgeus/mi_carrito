@@ -26,6 +26,11 @@ class Homeproducto extends Component
     public function addToCart($user_id)
     {
        
+        if ($this->cantidad == NULL) {
+            $this->dispatch('alertProduct', msg:'No colocó cantidad', type: 'bg-warning');
+            return;
+        }
+
         $selfItemAmount = UsuarioCarrito::where('usuario_id', $user_id)->sum('cantidad');
 
         if ( $this->cantidad + $selfItemAmount > $this->producto->stock ) {
