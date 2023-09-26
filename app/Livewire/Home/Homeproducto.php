@@ -31,7 +31,7 @@ class Homeproducto extends Component
             return;
         }
 
-        $selfItemAmount = UsuarioCarrito::where('usuario_id', $user_id)->sum('cantidad');
+        $selfItemAmount = UsuarioCarrito::where('usuario_id', $user_id)->where('producto_id', $this->producto->id)->sum('cantidad');
 
         if ( $this->cantidad + $selfItemAmount > $this->producto->stock ) {
             $this->dispatch('alertProduct', msg:'El stock es insuficiente para la cantidad que requiere comprar, pruebe otra cantidad', type: 'bg-danger');
