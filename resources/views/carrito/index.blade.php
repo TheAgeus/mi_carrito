@@ -13,7 +13,7 @@
                 <th class="text-center">Cantidad</th>
                 <th class="text-end">Precio Individual</th>
                 <th class="text-end">Total</th>
-
+                <th class="col-2 text-center">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +24,15 @@
                         <td class="text-center">{{$item->cantidad}}</td>
                         <td class="text-end">$ {{$item->producto->precio_mx}} MX</td>
                         <td class="text-end">$ {{$item->cantidad * $item->producto->precio_mx}} MX</td>
+                        <td class="text-center">
+                            <form action="{{route('deleteCarritoItem', $item->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm"> 
+                                    Borrar del Carrito 
+                                </button> 
+                            </form>
+                        </td>      
                         @php
                             $total += $item->cantidad * $item->producto->precio_mx;
                         @endphp
