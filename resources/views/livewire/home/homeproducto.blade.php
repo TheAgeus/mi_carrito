@@ -1,4 +1,11 @@
 <div>
+    @if (session()->has('errorToModal'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{session()->get('errorToModal')}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    @endif
+
     <div class="card">
         <img src="{{asset('/storage/images/productos/' . $producto->img_path)}}" class="img-fluid img-thumbnail" style="height: 300px;" alt="...">
     
@@ -19,5 +26,11 @@
             </div>
         </div>
 
+        
+
     </div>
+
+
+   
+
 </div>

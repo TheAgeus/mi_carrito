@@ -25,6 +25,13 @@ class Homeproducto extends Component
 
     public function addToCart($user_id)
     {
+       
+        $selfItemAmount = UsuarioCarrito::where('usuario_id', $user_id)->sum('cantidad');
+
+        if ( $this->cantidad + $selfItemAmount > $this->producto->stock ) {
+            session()->flash('errorToModal', 'El stock es insuficiente para la cantidad que requiere comprar, pruebe otra cantidad');
+            return;
+        }
 
         UsuarioCarrito::create([
             'usuario_id' => $user_id,
