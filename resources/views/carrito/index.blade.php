@@ -42,6 +42,8 @@
                         <td colspan="4" class="text-end border-top fw-bold">TOTAL:</td>
                         <td colspan="1" class="text-end border-top fw-bold text-danger">$ {{$total}} MX</td>
                         <td colspan="1" class="text-center border-top fw-bold text-danger">
+                            
+                            <!-- BORRAR CARRITO BUTTON -->
                             <form action="{{route('deleteAllCarritoItem')}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -51,11 +53,26 @@
                                     </strong> 
                                 </button> 
                             </form>    
+
+
+                              
+
                         </td>
                     </tr>
             </tbody>
           </table>
         
+    </div>
+
+    <!-- PAGAR CARRITO BUTTON -->
+    <div class="container">
+        <form>
+            <button type="submit" class="btn btn-primary btn-sm mt-3"> 
+                <strong>
+                    PAGAR
+                </strong> 
+            </button> 
+        </form> 
     </div>
 
 @endsection
