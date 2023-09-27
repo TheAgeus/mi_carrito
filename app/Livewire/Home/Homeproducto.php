@@ -38,11 +38,18 @@ class Homeproducto extends Component
             return;
         }
 
-        UsuarioCarrito::create([
-            'usuario_id' => $user_id,
-            'producto_id' => $this->producto->id,
-            'cantidad' => $this->cantidad
-        ]);
+        if ( $selfItemAmount > 0 ) {
+            UsuarioCarrito::where('usuario_id', $user_id)
+                ->where('producto_id', $this->producto->id)
+                ->increment('cantidad', $this->cantidad);
+        }
+        else {
+            UsuarioCarrito::create([
+                'usuario_id' => $user_id,
+                'producto_id' => $this->producto->id,
+                'cantidad' => $this->cantidad
+            ]);
+        }
 
         $this->dispatch('updateCart', user_id: $user_id);
         $this->dispatch('alertProduct', msg: 'Se han añadido ' . $this->cantidad . ' ' . $this->producto->name, type: 'bg-success');
