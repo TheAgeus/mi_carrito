@@ -71,3 +71,8 @@ Route::get('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'i
 Route::delete('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'delete'])->name('deleteCarritoItem');
 
 Route::delete('deleteAll/micarrito', [App\Http\Controllers\CarritoController::class, 'deleteAll'])->name('deleteAllCarritoItem');
+
+
+// Stripe
+Route::get('Stripe', [App\Http\Controllers\StripeController::class, 'index'])->name('StripeIndex');
+Route::post('Stripe', [App\Http\Controllers\StripeController::class, 'stripePost'])->name('stripe.post');

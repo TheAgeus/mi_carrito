@@ -60,7 +60,7 @@
 
     <div class="container">
 
-        <form action="{{route('stripePagarCarrito', ['cartItems' => $carrito])}}" method="POST">
+        <form action="{{route('StripeIndex')}}" method="GET">
             @csrf
             <button type="submit" class="btn btn-success btn-sm"> 
                 <strong>
