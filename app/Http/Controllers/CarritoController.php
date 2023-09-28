@@ -9,7 +9,9 @@ class CarritoController extends Controller
 {
     public function index()
     {
-        $carrito = UsuarioCarrito::where('usuario_id', Auth()->user()->id)->get();
+        $carrito = UsuarioCarrito::where('usuario_id', Auth()->user()->id)
+            ->where('status', '')
+            ->get();
         
         
         return view('carrito.index', [
@@ -30,7 +32,9 @@ class CarritoController extends Controller
 
     public function deleteAll()
     {
-        UsuarioCarrito::where('usuario_id', Auth()->user()->id)->delete();
+        UsuarioCarrito::where('usuario_id', Auth()->user()->id)
+            ->where('status', '')
+            ->delete();
         return redirect()->back();
     }
 

@@ -19,7 +19,9 @@ class Carritoicon extends Component
     #[On('updateCart')]
     public function selfUpdateCart($user_id)
     {
-        $carrito = UsuarioCarrito::where('usuario_id', $user_id)->get();
+        $carrito = UsuarioCarrito::where('usuario_id', $user_id)
+            ->where('status', '')
+            ->get();
         if (count($carrito) == 0)
         {
             $this->cantidad = 0;
@@ -40,7 +42,9 @@ class Carritoicon extends Component
     public function mount($usuario_id)
     {
 
-        $carrito = UsuarioCarrito::where('usuario_id', $usuario_id)->get();
+        $carrito = UsuarioCarrito::where('usuario_id', $usuario_id)
+            ->where('status', '')
+            ->get();
         if (count($carrito) == 0)
         {
             $this->cantidad = 0;
