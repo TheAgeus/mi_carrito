@@ -58,4 +58,17 @@
         
     </div>
 
+    <div class="container">
+
+        <form action="{{route('stripePagarCarrito', ['cartItems' => $carrito])}}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-success btn-sm"> 
+                <strong>
+                    Pagar $ {{ $total }}
+                </strong> 
+            </button> 
+        </form>    
+
+    </div>
+
 @endsection
