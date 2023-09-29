@@ -15,8 +15,12 @@
         </ul>
 
         <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
-        @livewire('home.carritoicon', ['usuario_id' => Auth()->user()->id])
-            
+        @guest
+        
+        @else
+          @livewire('home.carritoicon', ['usuario_id' => Auth()->user()->id])
+        @endguest  
+
         <a class="navbar-brand" href=""></a>
         <a class="navbar-brand" href=""></a>
       </div>
