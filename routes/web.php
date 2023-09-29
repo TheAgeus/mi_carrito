@@ -55,11 +55,17 @@ Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(f
     Route::resource('categoria', CategoriaController::class);
 
     Route::resource('productos', ProductoController::class);
+
+    
+    // Compras realizadas
+    Route::get('AllCompras', [App\Http\Controllers\CarritoController::class, 'AllCompras'])->name('AllCompras');
 });
 
 
 
 Auth::routes();
+
+// CARRITO
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -69,10 +75,15 @@ Route::get('/micarrito', [App\Http\Controllers\CarritoController::class, 'index'
 Route::get('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'item'])->name('showCarritoItem'); 
 
 Route::delete('/micarrito/{id}', [App\Http\Controllers\CarritoController::class, 'delete'])->name('deleteCarritoItem');
-
 Route::delete('deleteAll/micarrito', [App\Http\Controllers\CarritoController::class, 'deleteAll'])->name('deleteAllCarritoItem');
+
+// Mis compras
+Route::get('MisCompras', [App\Http\Controllers\CarritoController::class, 'MisCompras'])->name('MisCompras');
 
 
 // Stripe
 Route::get('Stripe', [App\Http\Controllers\StripeController::class, 'index'])->name('StripeIndex');
+
 Route::post('Stripe', [App\Http\Controllers\StripeController::class, 'stripePost'])->name('stripe.post');
+
+
