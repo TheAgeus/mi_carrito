@@ -17,6 +17,10 @@ use Livewire\Attributes\Rule;
 use App\Exports\ProductosExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+use Illuminate\Support\Facades\Storage;
+ 
+
+
 class Index extends Component
 {
 
@@ -108,10 +112,10 @@ class Index extends Component
             File::delete(public_path() . '/storage/images/productos/' . $this->edit_img_old);
             
             // Guardar la nueva imagen
-            $img_name = time() . '-' . $this->name . '.' . $this->edit_img->extension();
-            $destination_path = 'public/images/productos';
+            Storage::disk('public')->putFileAs('/images/productos', $this->edit_img, $this->producto_id . '.' . $this->edit_img->extension());
+            $img_name = $this->producto_id . '.' . $this->edit_img->extension();
             $image = $this->edit_img;
-            $path = $this->edit_img->storeAs($destination_path, $img_name);
+
         }
         else 
         {
@@ -137,11 +141,9 @@ class Index extends Component
     {
         $this->validate();
 
-        $img_name = time() . '-' . $this->name . '.' . $this->img->extension();
-
-        $destination_path = 'public/images/productos';
+        Storage::disk('public')->putFileAs('/images/productos', $this->img, $this->producto_id . '.' . $this->img->extension());
+        $img_name = $this->producto_id . '.' . $this->img->extension();
         $image = $this->img;
-        $path = $this->img->storeAs($destination_path, $img_name);
 
         \App\Models\Producto::create([
             'name' => $this->name,

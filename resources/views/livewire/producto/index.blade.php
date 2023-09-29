@@ -66,7 +66,7 @@
                         <td class="text-center">{{$producto->proveedor}}</td>
                         <td class="text-center">{{$producto->precio_proveedor}}</td>
                         <td class="text-center">
-                            <img width="40px" height="40px" src="{{asset('/storage/images/productos/' . $producto->img_path)}}" alt="">
+                            <img width="40px" height="40px" src="{{env('APP_URL') . '/storage/images/productos/' . $producto->img_path}}" alt="">
                         </td>
                         <td style="text-align: right;">
                             <button wire:click="delete({{$producto->id}})" type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
