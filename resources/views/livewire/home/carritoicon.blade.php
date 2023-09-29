@@ -6,5 +6,5 @@
           {{$cantidad}}
           <span class="visually-hidden">unread messages</span>
         </span>
-      </a>
+    </a>
 </div>

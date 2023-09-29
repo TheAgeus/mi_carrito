@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-    
-                    <div class="card-body">
-                        <div class="alert alert-success" role="alert">
-                            {{ __('Un correo de verificación ha sido enviado a tu correo.') }}
-                        </div>
-    
-                    </div>
-                </div>
+@section('content')
+
+    <div class="container d-flex justify-content-center">
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">CORREO ENVIADO !!!!</div>
+            <div class="card-body">
+              <h5 class="card-title">REVISA TU CORREO</h5>
+              <p class="card-text">Se ha enviado un correo con el link de confirmación, porfavor vaya y confirme su correo.</p>
             </div>
         </div>
     </div>
 
-</body>
-</html>
+
+@endsection

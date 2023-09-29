@@ -14,13 +14,13 @@
 
 
     <div class="card">
-        <img src="{{env('APP_URL') . '/storage/images/productos/' . $producto->img_path}}" class="img-fluid img-thumbnail myimg" alt="...">
+            <img src="{{env('APP_URL') . '/storage/images/productos/' . $producto->img_path}}" class="img-fluid  myimg" alt="...">
+        
     
         <style>
             .myimg{
                 max-width: 400px;
                 aspect-ratio: 5/4;
-                margin: auto;
             }
         </style>
 

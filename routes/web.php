@@ -20,26 +20,26 @@ use App\Http\Controllers\ProductoController;
 
 
  Route::get('/', [App\Http\Controllers\nonAuthHomeController::class, 'index'])->name('index');
+ Route::get('/home', [App\Http\Controllers\nonAuthHomeController::class, 'index'])->name('index');
 
  Route::get('/producto/{id}', [App\Http\Controllers\ProductoController::class, 'showProducto'])->name('showProducto');
 
 
 // Email verification
 Auth::routes([
-
     'verify' => true
-
 ]);
 
+Route::get('/emailSend', [App\Http\Controllers\AuthController::class, 'emailSend'])->name('emailSend')->middleware('auth');
 
 // Rutas para el inicio de sesión (any)
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+//Route::get('/login', [AuthController::class, 'login'])->name('login');
 
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+//Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+//Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
@@ -58,11 +58,11 @@ Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(f
 
 
 
-Auth::routes();
+//Auth::routes();
 
 // CARRITO
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/micarrito', [App\Http\Controllers\CarritoController::class, 'index'])->name('micarrito');
     
