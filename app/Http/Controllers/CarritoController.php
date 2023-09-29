@@ -29,6 +29,7 @@ class CarritoController extends Controller
 
     public function MisCompras()
     {
+
         $Items = UsuarioCarrito::where('status', 'PAGADO')->where('usuario_id', Auth()->user()->id)->get()->groupBy('id_pago');
 
         return view('compras.miscompras', ['items' => $Items]);

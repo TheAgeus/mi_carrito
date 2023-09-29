@@ -18,7 +18,7 @@ class AuthController extends Controller
 
     public function registerPost(Request $request) 
     {
-        
+
         // Definir reglas de validción
         $rules = [
             'email' => 'required|unique:users|email',
@@ -76,6 +76,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) 
         {
+
             if(Auth()->user()->role == 'admin')
             {
                 return redirect()->route('home.admin');
@@ -103,5 +104,16 @@ class AuthController extends Controller
     public function logoutGet()
     {
         return redirect()->route('login');
+    }
+
+
+    public function emailSend()
+    {
+        if(Auth()->user()->email_verified_at == Null) {
+            return view('auth.verify-email');
+        }
+        else{
+            return redirect('home');
+        }
     }
 }
