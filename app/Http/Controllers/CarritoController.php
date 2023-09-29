@@ -19,6 +19,21 @@ class CarritoController extends Controller
         ]);
     }
 
+    public function AllCompras()
+    {
+        $Items = UsuarioCarrito::where('status', 'PAGADO')->get()->groupBy('id_pago');
+
+        return view('compras.all', ['items' => $Items]);
+    }
+
+
+    public function MisCompras()
+    {
+        $Items = UsuarioCarrito::where('status', 'PAGADO')->where('usuario_id', Auth()->user()->id)->get()->groupBy('id_pago');
+
+        return view('compras.miscompras', ['items' => $Items]);
+    }
+
     public function item($carritoItemId)
     {
         return redirect('micarrito');

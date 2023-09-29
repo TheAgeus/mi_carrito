@@ -28,6 +28,12 @@
                 <li class="nav-item">
                     <a class="nav-link hover" href="{{route('productos.index')}}">Productos</a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link hover" href="{{ route('AllCompras') }}">Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hover" href="{{ route('MisCompras') }}">Mis Compras</a>
+                </li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">

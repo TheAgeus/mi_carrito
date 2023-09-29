@@ -11,6 +11,7 @@
       <div class="navbar-collapse collapse" id="navbarColor01" style="">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             @livewire('home.categoriadropdown', ['categorias' => $categorias])
+  
         </ul>
 
         <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
