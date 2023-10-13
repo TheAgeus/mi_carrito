@@ -15,8 +15,7 @@
 
     <div class="card">
             <img src="{{env('APP_URL') . '/storage/images/productos/' . $producto->img_path}}" class="img-fluid  myimg" alt="...">
-        
-    
+
         <style>
             .myimg{
                 max-width: 400px;

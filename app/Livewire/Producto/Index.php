@@ -139,13 +139,14 @@ class Index extends Component
 
     public function save($usuario_id)
     {
+        // Valida los campos del formulario
         $this->validate();
-
-        Storage::disk('public')->putFileAs('/images/productos', $this->img, $this->producto_id . '.' . $this->img->extension());
-        $img_name = $this->producto_id . '.' . $this->img->extension();
+        
+        // Obtine la imagen y la guarda en una variable
         $image = $this->img;
-
-        \App\Models\Producto::create([
+        
+        // Guardas el producto
+        $newProducto = \App\Models\Producto::create([
             'name' => $this->name,
             'precio_mx' => $this->precio_mx,
             'stock' => $this->stock,
@@ -154,9 +155,15 @@ class Index extends Component
             'codigo_proveedor' => $this->codigo_proveedor,
             'proveedor' => $this->proveedor,
             'precio_proveedor' => $this->precio_proveedor,
-            'img_path' => $img_name,
         ]);
 
+        // Cambias el nombre de la imagen porque no se puede obtener el id antes de crear el producto
+        $newProducto->update(['img_path' => $newProducto->id . '.' . $this->img->extension()]);
+
+        // Guardas la imagen
+        Storage::disk('public')->putFileAs('/images/productos', $this->img, $newProducto->id . '.' . $this->img->extension());
+
+        // Regresas con mensaje de producto creado correctamente
         session()->flash('message', 'Producto creado correctamente.');
     }
 
