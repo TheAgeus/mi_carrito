@@ -16,18 +16,31 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('home')}}">Mi Carrito <b>{{Auth()->user()->role}}</b></a>
+            <a class="navbar-brand" href="{{route('index')}}">Mi Carrito 
+                @guest
+                @else
+                    <b>{{Auth()->user()->role}}</b>
+                @endguest
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link hover" href="{{route('categoria.index')}}">Categorías</a>
-                </li> 
-                <li class="nav-item">
-                    <a class="nav-link hover" href="{{route('productos.index')}}">Productos</a>
-                </li> 
+                @guest
+                @else
+                    @if(Auth()->user()->role == 'admin' or Auth()->user()->role == 'inventarios')
+                        <li class="nav-item">
+                            <a class="nav-link hover" href="{{route('categoria.index')}}">Administrar Categorías</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link hover" href="{{route('productos.index')}}">Administrar Productos</a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link hover" href="{{ route('AllCompras') }}">Ver todas las Ventas</a>
+                        </li>
+                    @endif
+                @endguest
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
@@ -67,7 +80,46 @@
             </div>
         </div>
     </nav>
+
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid p-m-0 p-lg-0">
+          <a class="navbar-brand" href=""></a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarColor01" style="">
+            <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+                @if(isset($categorias))
+                    @livewire('home.categoriadropdown', ['categorias' => $categorias])
+                @endif
+                <li class="nav-item ms-3">
+                  <a class="nav-link" href="{{ route('MisCompras') }}">Mis Compras</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="nav-link" href="{{ route('index') }}">Productos</a>
+                </li>
+            </ul>
     
+            <!-- ESTO DEBE SER UN COMPONENTE DE LIVEWIRE -->
+            @guest
+              <a type="button" class="btn btn-dark position-relative">
+                Ver mi carrito <i class="bi bi-cart4" style="color: white; font-size: 1.4rem;"></i>
+        
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </a>
+            @else
+              @livewire('home.carritoicon', ['usuario_id' => Auth()->user()->id])
+            @endguest  
+    
+            <a class="navbar-brand" href=""></a>
+            <a class="navbar-brand" href=""></a>
+          </div>
+        </div>
+    </nav>
+
     @yield('content')
 
 

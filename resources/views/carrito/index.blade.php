@@ -64,15 +64,4 @@
         
     </div>
 
-    <!-- PAGAR CARRITO BUTTON -->
-    <div class="container">
-        <form>
-            <button type="submit" class="btn btn-primary btn-sm mt-3"> 
-                <strong>
-                    PAGAR
-                </strong> 
-            </button> 
-        </form> 
-    </div>
-
 @endsection
