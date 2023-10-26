@@ -22,14 +22,11 @@
     }
 </style>
 
-
-@if($status == "succeeded") 
-    <div class="full_container">
-        <div class="text">
-            ¡Pago realizado correctamente!
-        </div>
-        <div class="link">
-            <a href="{{route('MisCompras')}}">Regresar a mis compras</a>
-        </div>
+<div class="full_container">
+    <div class="text">
+       ¡Pago realizado correctamente!
     </div>
-@endif
+    <div class="link">
+        <a href="{{route('MisCompras')}}">Regresar a mis compras</a>
+    </div>
+</div>
