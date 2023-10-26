@@ -38,7 +38,10 @@
                 border-radius: 5px;
                 color: white;
             }
-        
+        .btn:hover{
+            cursor: pointer;
+            background-color: rgb(38, 38, 38);
+        }
         @media (width < 700px) {
             body {
                 color: white;
