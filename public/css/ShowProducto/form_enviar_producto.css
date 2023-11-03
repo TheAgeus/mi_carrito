@@ -37,8 +37,9 @@
 }
 .write_comentario_button > button {
     width: 100%;
-    background-color: rgb(70, 70, 197);
+    background-color: rgb(16, 16, 92);
     color: white;
+    padding: 1rem;
 }
 @media (width > 500px) {
     .write_comentario_button > button {
