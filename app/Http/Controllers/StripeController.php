@@ -73,4 +73,9 @@ class StripeController extends Controller
             ]);
         }
     }
+
+    public function test_stripe()
+    {
+        return view('stripe.test');
+    }
 }

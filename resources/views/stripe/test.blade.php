@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+</head>
+<body>
     <style>
         .text{
             font-size: 3rem;
@@ -28,22 +30,16 @@
             padding: 0;
         }
     </style>
-</head>
-<body>
-    @if($status == "succeeded") 
-        <div class="full_container">
-            <div class="text">
-                ¡Pago realizado correctamente!
-            </div>
-            <div class="link">
-                <a href="{{route('MisCompras')}}">Regresar a mis compras</a>
-            </div>
+    
+    <div class="full_container">
+        <div class="text">
+           ¡Pago realizado correctamente!
         </div>
-    @endif
+        <div class="link">
+            <a href="{{route('MisCompras')}}">Regresar a mis compras</a>
+        </div>
+    </div>
 </body>
 </html>
-
-
-
 
 
