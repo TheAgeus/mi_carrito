@@ -1,6 +1,11 @@
 @extends('layouts.layout')
 @section('content')
 
+    <link rel="stylesheet" href="{{asset('css/ShowProducto/producto.css') }}">    
+    <link rel="stylesheet" href="{{asset('css/ShowProducto/form_enviar_producto.css') }}">
+    <link rel="stylesheet" href="{{asset('css/ShowProducto/comentarios.css') }}">
+
+
     <div class="fullcontainer">
 
         <div class="container-start">
@@ -29,62 +34,70 @@
         
     </div>
 
-
-
-    <style>
-
-        .mycontainer > img {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .mycontainer{
-                margin-inline: 1rem;
-            }
-
-        @media (700px < width) {
-            .container-start{
-                padding: 1rem;
-                margin: 2px;
-                margin-top: 1rem;
-            }
-            .container-end {
-                width: 50%;
-                padding-inline: 3rem;
-            }
-            .container-end > .mycontainer{
-                margin-block: 2rem;
-            }
-
-            .fullcontainer{
-                width: 100%;
-    
-                display: flex;
-                justify-content: center;
-                align-items: center;
-    
-                padding-inline: 3rem;
-            }
+    <form action="{{ route('agregar_comentario') }}" method="post" id="comentario_form">
+        @csrf
+        <input type="hidden" name="producto_id" value="{{$producto->id}}">
             
-        }
+        <div class="write_comentario_form">
+            @if(session('NuevoComentario'))
+                <div class="write_comentario_form_mensaje">
+                    {{ session('NuevoComentario') }}
+                </div>
+            @endif
+            <div class="comentarios_box_title">Agregar un comentario:</div>
+            <div class="write_comentario_textarea">
+                <textarea name="comentario" required form="comentario_form" placeholder="Escribe tu comentario aquí"></textarea>
+            </div>
+            <div class="form_group">
+                <div class="calificacion_input">
+                    Calificación:
+                    <input name="calificacion" required type="number" min="1" max="5" placeholder="1" value="1">
+                </div>
+                <div class="write_comentario_button">
+                    <button type="submit">Enviar Comentario</button>
+                </div>
+            </div>
+        </div>
+    </form>
 
-        @media (700px > width){
-            .container-start{
-                border: 1px solid rgba(105, 105, 105,0.5);
+    
+    <div class="comentarios_box">
+        <div class="comentarios_box_title">
+            Comentarios del producto:
+        </div>
+        @foreach ($comentarios as $comentario)
 
-            }
-            .fullcontainer{
-                flex-direction: column;
-            }
-            .mycontainer {
-                margin-block: 1rem;
-            }
-            .mycontainer > img {
-                width: 100%
-            }
-        }
+            <?php $calificacion = $comentario->calificacion?>
 
-    </style>
+            <div class="comentario_box">
+                <div class="comentario_box_head">
+                    <div class="comentario_head_title">Comentario escrito por: <b>{{$comentario->usuario->name}}</b></div>
+                    <div class="comentario_head_fecha">Fecha: <b>{{$comentario->created_at}}</b></div>
+                    <div class="comentario_head_calificacion">
+                        Calificación:
+                        
+                        @for ($i = 1; $i <= $calificacion; $i++) 
+                            <div class="star 
+                                @if ($calificacion >= 4) 
+                                    green 
+                                @elseif ($calificacion == 3)
+                                    yellow
+                                @else
+                                    red
+                                @endif
+                            "></div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="comentario_box_body">
+                    {{$comentario->comentario}}
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+
+
 
 @endsection
 

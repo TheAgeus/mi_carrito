@@ -83,5 +83,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });    
 
+
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::post('agregar_comentario', [App\Http\Controllers\ComentarioController::class, 'store'])->name('agregar_comentario');
+});
+
+
 Route::get('/test_route', [App\Http\Controllers\StripeController::class, 'test_stripe'])->name('stripe.test');
 

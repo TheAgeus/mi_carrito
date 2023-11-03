@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Comentario;
 
 use Illuminate\Http\Request;
 
@@ -20,8 +21,11 @@ class ProductoController extends Controller
 
     public function showProducto($id)
     {
+        $producto = Producto::find($id);
+        $comentarios = Comentario::where('producto_id', $id)->orderBy('created_at','desc')->get();
         return view('productos.showProducto', [
-            'producto' => Producto::find($id)
+            'producto' => $producto,
+            'comentarios' => $comentarios,
         ]);
     }
 }
