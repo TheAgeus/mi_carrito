@@ -31,34 +31,38 @@
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quo rerum et, quae aliquid, aspernatur explicabo, dolore debitis odio aliquam maiores nihil quis! Quod quas magni praesentium velit. Minima, voluptate?
             </div>
         </div>
-        
     </div>
 
-    <form action="{{ route('agregar_comentario') }}" method="post" id="comentario_form">
-        @csrf
-        <input type="hidden" name="producto_id" value="{{$producto->id}}">
-            
-        <div class="write_comentario_form">
-            @if(session('NuevoComentario'))
-                <div class="write_comentario_form_mensaje">
-                    {{ session('NuevoComentario') }}
+    @guest
+        
+    @else
+        <form action="{{ route('agregar_comentario') }}" method="post" id="comentario_form">
+            @csrf
+            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                
+            <div class="write_comentario_form">
+                @if(session('NuevoComentario'))
+                    <div class="write_comentario_form_mensaje">
+                        {{ session('NuevoComentario') }}
+                    </div>
+                @endif
+                <div class="comentarios_box_title">Agregar un comentario:</div>
+                <div class="write_comentario_textarea">
+                    <textarea name="comentario" required form="comentario_form" placeholder="Escribe tu comentario aquí"></textarea>
                 </div>
-            @endif
-            <div class="comentarios_box_title">Agregar un comentario:</div>
-            <div class="write_comentario_textarea">
-                <textarea name="comentario" required form="comentario_form" placeholder="Escribe tu comentario aquí"></textarea>
+                <div class="form_group">
+                    <div class="calificacion_input">
+                        Calificación:
+                        <input name="calificacion" required type="number" min="1" max="5" placeholder="1" value="1">
+                    </div>
+                    <div class="write_comentario_button">
+                        <button type="submit">Enviar Comentario</button>
+                    </div>
+                </div>
             </div>
-            <div class="form_group">
-                <div class="calificacion_input">
-                    Calificación:
-                    <input name="calificacion" required type="number" min="1" max="5" placeholder="1" value="1">
-                </div>
-                <div class="write_comentario_button">
-                    <button type="submit">Enviar Comentario</button>
-                </div>
-            </div>
-        </div>
-    </form>
+        </form>
+    @endguest
+    
 
     
     <div class="comentarios_box">
