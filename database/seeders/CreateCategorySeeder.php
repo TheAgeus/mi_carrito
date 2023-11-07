@@ -14,21 +14,18 @@ class CreateCategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            [
-                'name'=>'Laptop',
-            ],
-            [
-                'name'=>'PC-Escritorio',
-            ],
-            [
-                'name'=>'HDD',
-            ],
-            [
-                'name'=>'SSD',
-            ],
-            [
-                'name'=>'FUENTE',
-            ],
+            ['name'=>'LAPTOP',],
+            ['name'=>'COMPUTADORA DE ESCRITORIO',],
+            ['name'=>'HDD',],
+            ['name'=>'SSD',],
+            ['name'=>'FUENTE DE PODER',],
+            ['name'=>'CABLES SATA',],
+            ['name'=>'RATONES',],
+            ['name'=>'TECLADOS',],
+            ['name'=>'MONITORIES',],
+            ['name'=>'RAM',],
+            ['name'=>'EQUIPO PARA SERVIDOR',],
+            ['name'=>'EQUIPO PARA OFICINA',],
         ];
         
         foreach ($categories as $category)
