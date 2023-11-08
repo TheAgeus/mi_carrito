@@ -64,4 +64,17 @@
         
     </div>
 
+    <!-- PAGAR CARRITO BUTTON -->
+    <div class="container">
+        <form action="{{ route('stripeIndex') }}" method="POST">
+        @csrf
+
+            <button type="submit" class="btn btn-primary btn-sm mt-3"> 
+                <strong>
+                    PAGAR
+                </strong> 
+            </button> 
+        </form> 
+    </div>
+
 @endsection
