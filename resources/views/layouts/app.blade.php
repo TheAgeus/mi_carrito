@@ -15,10 +15,13 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <link rel="stylesheet" href="resources/css/navbar.css">
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm my-navbar-styled">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <b>Mi Carrito</b>

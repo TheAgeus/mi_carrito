@@ -1,10 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.main-layout')
+  @section('content')
+    <div class="container">
+      
+      @include('componentes.slider-top')
 
-@section('content')
-
-<div class="container">
-  @livewire('home.homeproductos')
-</div>
-
-
-@endsection
+    </div>
+  @endsection
