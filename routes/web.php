@@ -47,6 +47,8 @@ Route::get('/emailSend', [App\Http\Controllers\AuthController::class, 'emailSend
 
 Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(function () {
 
+    Route::get('adminpanel', [App\Http\Controllers\HomeController::class, 'Admin_Panel'])->name('admin.panel');
+
     Route::resource('categoria', CategoriaController::class);
 
     Route::resource('productos', ProductoController::class);

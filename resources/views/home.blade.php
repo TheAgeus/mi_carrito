@@ -4,6 +4,8 @@
       
       @include('componentes.slider-top')
 
+      @include('componentes.categorias')
+
     </div>
   @endsection
 

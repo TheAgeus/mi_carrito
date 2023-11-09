@@ -34,12 +34,20 @@
                         <button type="submit">Cerrar sesión</button>
                     </form>
                 </li>
+               
+                
+                
             @endguest
     
         </ul>
     </div>
     <div class="segundo-navbar">
         <ul>
+            @if(Auth()->user()->role == 'admin' or Auth()->user()->role == 'inventarios')
+                <li class="">
+                    <a class="" style="color: rgb(255, 71, 71); font-weight: bold;" href="{{ route('admin.panel') }}">Admin panel</a>
+                </li>
+            @endif
             <li class="">
                 <a href="/">Catálogo extendido</a>
             </li>

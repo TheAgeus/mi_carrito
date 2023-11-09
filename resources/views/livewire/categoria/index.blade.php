@@ -40,6 +40,7 @@
                 <tr>
                 <th>#</th>
                 <th>Nombre</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
                 </tr>
             </thead>
@@ -48,6 +49,9 @@
                 <tr>
                     <td>{{$categoria->id}}</th>
                     <td>{{$categoria->name}}</td>
+                    <td class="text-center">
+                        <img width="40px" height="40px" src="{{env('APP_URL') . '/storage/images/categorias/' . $categoria->img_path}}" alt="">
+                    </td>
                     <td>
                         <button wire:click="delete({{$categoria->id}})" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
                         <!-- Button trigger modal -->
@@ -56,21 +60,28 @@
                         </button>
                         
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal{{$categoria->id}}" tabindex="-1" aria-labelledby="exampleModal{{$categoria->id}}Label" aria-hidden="true">
+                        <div wire:ignore.self class="modal fade" id="exampleModal{{$categoria->id}}" tabindex="-1" aria-labelledby="exampleModal{{$categoria->id}}Label" aria-hidden="true">
                             <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModal{{$categoria->id}}Label">Editar Categoría "{{$categoria->name}}"</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModal{{$categoria->id}}Label">Editar Categoría "{{$categoria->name}}"</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input wire:model="name" class="form-control" type="text" placeholder="{{$categoria->name}}" aria-label="Agregar">
+
+                                        <div class="mb-3">
+                                            <label for="img" class="form-label">Imagen del producto @error('img') <span style="color: red"> {{ $message }} </span> @enderror</label>
+                                            <input wire:model="img" class="form-control" type="file" id="img">
+                                        </div>
+
+                                    </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                        <button wire:click="edit({{$categoria->id}})" data-bs-dismiss="modal" type="button" class="btn btn-primary">Guardar Cambios
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <input wire:model="name" class="form-control" type="text" placeholder="{{$categoria->name}}" aria-label="Agregar">
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button wire:click="edit({{$categoria->id}})" data-bs-dismiss="modal" type="button" class="btn btn-primary">Guardar Cambios</button>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </td>

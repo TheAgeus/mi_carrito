@@ -28,7 +28,7 @@ body {
     justify-content: space-between;
     font-size: 1rem;
     width: 100%;
-    z-index: 2;
+    z-index: 1000;
 
 }
 
