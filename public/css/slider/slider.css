@@ -1,22 +1,63 @@
 .slider {
     padding-top: 6rem;
     padding-bottom: 1rem;
+    width: 90%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    margin-inline: auto;
+    overflow-x: hidden;
+
+}
+
+.slider .slide {
+    width: calc(100% / 3);
 }
 
 .slide-container {
-    width: 90%;
+    width: 300%;
     position: relative;
     overflow-x: scroll;
+    display: flex;
+    flex-grow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+
+    transition: all, .5s ease;
+
 }
 
-.slider > .slide-container > img {
+.slider .slide-container .slide img {
     width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     overflow-y: scroll;
+}
+
+.slider .puntos {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+
+.slider .punto:hover {
+    cursor: pointer;
+
+}
+
+.activo {
+    background-color: rgb(16, 167, 79);
+}
+
+.slider .punto {
+    width: 0.5em;
+    height: 0.5em;
+    list-style-type: none;
+    border-radius: 100%;
+    box-shadow: 1px 1px 10px black;
 }
 
 .hidden-link {
@@ -33,9 +74,8 @@
 }
 
 @media (width < 700px) {
-    .slider > .slide-container > img {
-        min-width: 500px;
-        min-height: 150px;
+    .slider .slide-container .slide img {
+        
     }
     .slider {
         padding-top: 12rem;
