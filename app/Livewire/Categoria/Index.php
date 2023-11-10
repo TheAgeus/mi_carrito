@@ -55,11 +55,15 @@ class Index extends Component
 
     public function edit($id)
     {
-        $this->validate();
 
+        $categoria =  Categoria::find($id);
+
+        if ($categoria->name == $this->name){
+            $this->validate();
+        }
 
         if ($this->img != NULL) {
-            $categoria =  Categoria::find($id);
+            
             $categoria->update([
                 'name' => $this->name,
                 'img_path' => $id . '.' . $this->img->extension()
