@@ -2,104 +2,34 @@
 
 
 <div class="categoria-slider-container">
+    <div class="next-button my-slider-btn">Next</div>
+    <div class="previous-button my-slider-btn">Prev</div>
+
     <div class="categoria-slider">
+
+        <?php 
+            $numberCategorias = count($categorias);
+            $slides = $categorias->splitIn(2);
+        ?>
+
+        @foreach ($slides as $slide)
+            <div class="categoria-slide">
+                @foreach ($slide as $item)
+                    <div class="categoria-container">
+                        <div class="categoria-img-container">
+                            <img src="{{env('APP_URL') . '/storage/images/categorias/' . $item->img_path }}" alt="">
+                        </div>
+                        <div class="categoria-text">
+                            {{ $item->name }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
+
         
-        <div class="previous-button"></div>
-
-        <div class="categoria-slide">
-            
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 1
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 2
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 3
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 4          
-                </div>
-            </div>
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 5
-                </div>
-            </div>
-        </div>
-        <div class="categoria-slide">
-            
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 1
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 2
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 3
-                </div>
-            </div>
-    
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 4          
-                </div>
-            </div>
-            <div class="categoria-container">
-                <div class="categoria-img-container">
-                    <img src="{{env('APP_URL') . '/storage/images/categorias/1.png' }}" alt="">
-                </div>
-                <div class="categoria-text">
-                    Laptops 5
-                </div>
-            </div>
-        </div>
-
-        <div class="next-button"></div>
 
     </div>
 </div>
+
+<script type="text/javascript" src="{{asset('js/categoria-slider.js')}}"></script>

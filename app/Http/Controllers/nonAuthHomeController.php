@@ -10,8 +10,12 @@ class nonAuthHomeController extends Controller
 {
     public function index()
     {
+
+        $tenRandom =  Categoria::inRandomOrder()->limit(10)->get();
+
         return view('home', [
-            'categorias' => Categoria::all(),
+            'categorias' =>  $tenRandom,
         ]);
+
     }
 }

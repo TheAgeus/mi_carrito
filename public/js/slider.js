@@ -15,3 +15,4 @@ puntos.forEach ((cadaPunto, i) => {
         puntos[i].classList.add('activo')
     })
 })
+
