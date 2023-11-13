@@ -6,12 +6,18 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use \App\Models\Categoria;
 
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+
 class Index extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
     protected $paginationTheme = 'bootstrap';
 
     public $name;
+    public $img;
 
     protected $rules = [
         'name' => 'required|unique:categorias'
@@ -36,6 +42,8 @@ class Index extends Component
             'name' => $this->name,
         ]); 
 
+        
+
         session()->flash('message', 'Categoría creada correctamente.');
     }
 
@@ -47,12 +55,30 @@ class Index extends Component
 
     public function edit($id)
     {
-        $this->validate();
 
-        $update = Categoria::find($id)->update([
-            'name' => $this->name,
-        ]);
+        $categoria =  Categoria::find($id);
 
+        if ($categoria->name == $this->name){
+            $this->validate();
+        }
+
+        if ($this->img != NULL) {
+            
+            $categoria->update([
+                'name' => $this->name,
+                'img_path' => $id . '.' . $this->img->extension()
+            ]);
+           
+            // Guardas la imagen
+            Storage::disk('public')->putFileAs('/images/categorias', $this->img, $id . '.' . $this->img->extension());
+        }
+        else {
+            $update = Categoria::find($id)->update([
+                'name' => $this->name,
+            ]);
+        }
+
+        
         session()->flash('message', 'Categoría actualizada correctamente.');
     }
 }

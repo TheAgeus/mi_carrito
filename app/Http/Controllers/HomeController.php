@@ -29,4 +29,9 @@ class HomeController extends Controller
             'categorias' => Categoria::all(),
         ]);
     }
+
+    public function Admin_Panel() 
+    {
+        return view('admin_panel');
+    }
 }

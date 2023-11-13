@@ -14,7 +14,7 @@
 
     @livewire('home.alert')
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary my-navbar-styled">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{route('index')}}">Mi Carrito 
                 @guest

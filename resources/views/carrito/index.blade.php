@@ -53,15 +53,25 @@
                                     </strong> 
                                 </button> 
                             </form>    
-
-
-                              
-
                         </td>
                     </tr>
             </tbody>
           </table>
         
+    </div>
+
+    <!-- PAGAR CARRITO BUTTON -->
+    <div class="container">
+
+        <form action="{{route('StripeIndex')}}" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-success btn-sm"> 
+                <strong>
+                    Pagar $ {{ $total }}
+                </strong> 
+            </button> 
+        </form>    
+
     </div>
 
 @endsection

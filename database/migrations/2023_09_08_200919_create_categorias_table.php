@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('img_path')->nullable()->default('Question-mark.jpg');
             $table->timestamps();
         });
     }

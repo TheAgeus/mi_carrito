@@ -1,10 +1,15 @@
-@extends('layouts.layout')
+@extends('layouts.main-layout')
+  @section('content')
+    <div class="container">
+      
+      @include('componentes.slider-top')
 
-@section('content')
+      @include('componentes.random-articles') 
 
-<div class="container">
-  @livewire('home.homeproductos')
-</div>
+      @include('componentes.categorias')
 
+      @include('componentes.random-articles-slider') 
 
-@endsection
+    </div>
+  @endsection
+

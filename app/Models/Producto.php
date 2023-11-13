@@ -22,6 +22,11 @@ class Producto extends Model
         'img_path',
     ];
 
+    public function average_score()
+    {
+        return 5;
+    }
+
     public function usuario()
     {
         return $this->belongsTo(User::class, 'usuario_id');
