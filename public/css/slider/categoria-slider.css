@@ -6,8 +6,6 @@
     overflow: hidden;
     margin-inline: auto;
     position: relative;
-
-    
 }
 .categoria-slider{
     display: flex;
@@ -21,6 +19,16 @@
 .categoria-container {
     width: calc(100% / 5);
     margin-block: 1rem;
+    position: relative;
+}
+.categoria-container .hidden-link {
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    position: absolute;
+}
+.categoria-container .hidden-link:hover {
+    background-color: unset;
 }
 .categoria-img-container{
     width: 95%;

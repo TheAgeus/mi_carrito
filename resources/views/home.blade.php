@@ -4,11 +4,11 @@
       
       @include('componentes.slider-top')
 
-      @include('componentes.random-articles') {{-- INCOMPLETO --}}
+      @include('componentes.random-articles') 
 
       @include('componentes.categorias')
 
-      @include('componentes.random-articles-slider') {{-- INCOMPLETO --}}
+      @include('componentes.random-articles-slider') 
 
     </div>
   @endsection

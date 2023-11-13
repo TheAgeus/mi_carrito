@@ -1,0 +1,107 @@
+.random-articles-slider-container {
+    width: 95%;
+    overflow: hidden;
+    margin-inline:auto;
+}
+.random-article-container .hidden-link:hover + img{
+    filter: brightness(120%);
+}
+.random-article-name{
+    position: relative;
+}
+
+.random-article-container .hidden-link:hover{
+    background-color: unset;
+}
+
+.random-articles-slider {
+    display: flex;
+    width: 200%;
+    overflow: hidden;
+
+    transition: all, 0.5s ease;
+}
+.random-article-slide {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+}
+.random-article-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: calc(100% / 5);
+}
+.random-article-img-container {
+    width: 95%;
+    aspect-ratio: 1/1;
+    margin-inline: auto;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.random-article-img-container img {
+    overflow: hidden;
+    margin-inline: auto;
+    width: 90%;
+}
+
+.agregar-random-article-to-card-btn-container {
+    width: 100%;
+}
+.agregar-random-article-to-card-btn-container button {
+    background-color: var(--nav-bg-color);
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    padding-block: 0.5rem;
+    font-weight: bold;
+}
+
+.agregar-random-article-to-card-btn-container button:hover {
+    filter: brightness(150%);
+    cursor: pointer;
+}
+.random-article-text {
+    padding-inline:0.5rem;
+}
+.random-article-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+}
+.random-article-name-link{
+    text-decoration: none;
+    color: rgb(34, 34, 34);
+}
+.random-article-price {
+    color: rgb(236, 1, 1);
+    font-weight: bold;
+}
+.random-article-rate img {
+    width: 16px;
+}
+
+.random-articles-slider-checkbox-container{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+}
+.random-articles-slider-checkbox-container .random-article-slider-checkbox:hover {
+    cursor: pointer;
+}
+.random-articles-slider-checkbox-container .random-article-slider-checkbox {
+    width: 0.5em;
+    height: 0.5em;
+    list-style-type: none;
+    border-radius: 100%;
+    box-shadow: 1px 1px 10px black;
+}

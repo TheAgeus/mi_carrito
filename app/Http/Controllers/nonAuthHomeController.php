@@ -14,10 +14,12 @@ class nonAuthHomeController extends Controller
 
         $tenRandom =  Categoria::inRandomOrder()->limit(10)->get();
         $nonSliderArticles =  Producto::inRandomOrder()->limit(4)->get();
+        $sliderArticles = Producto::inRandomOrder()->limit(10)->get();
 
         return view('home', [
             'categorias' =>  $tenRandom,
-            'nonSliderArticles' => $nonSliderArticles
+            'nonSliderArticles' => $nonSliderArticles,
+            'random_articles' => $sliderArticles,
         ]);
 
     }

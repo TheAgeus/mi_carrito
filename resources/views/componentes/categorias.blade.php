@@ -16,6 +16,7 @@
             <div class="categoria-slide">
                 @foreach ($slide as $item)
                     <div class="categoria-container">
+                        <a class="hidden-link" href="/categorias/{{$item->id}}"></a>
                         <div class="categoria-img-container">
                             <img src="{{env('APP_URL') . '/storage/images/categorias/' . $item->img_path }}" alt="">
                         </div>
