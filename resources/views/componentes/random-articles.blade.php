@@ -4,7 +4,7 @@
         width: 95%;
         margin-inline: auto;
         gap: 0.5rem;
-        margin-block: 5rem;
+        margin-block: 2rem 5rem;
     }
     .producto-nonSlider-card {
         flex: 1;
@@ -41,6 +41,10 @@
         position: absolute;
     }
 </style>
+
+<div class="section-title">
+    Artículos estrella.
+</div>
 
 <div class="producto-nonSlider-container">
     @foreach ($nonSliderArticles as $nonSliderArticle)

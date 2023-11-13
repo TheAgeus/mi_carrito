@@ -61,7 +61,7 @@
                 <a href="/">Artículos varios</a>
             </li>
             <li class="">
-                <a href="/">Categorías</a>
+                <a href="/categorias">Categorías</a>
             </li>
             <li class="">
                 <a href="/">Trabaja con nosotros</a>
@@ -73,5 +73,11 @@
     </div>
     
 </div>
+
+<div class="nav_auxiliar">
+
+</div>
+
+<script type="text/javascript" src="{{asset('js/navbar.js')}}"></script>
 
 

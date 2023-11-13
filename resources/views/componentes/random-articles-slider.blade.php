@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="{{asset('css/slider/random-articles-slider.css') }}">
 
+<div class="section-title">
+    Artículos varios.
+</div>
+
 <div class="random-articles-slider-container">
 
     <div class="random-articles-slider">

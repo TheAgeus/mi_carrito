@@ -184,3 +184,10 @@ body {
 .segundo-navbar > ul > li > a:hover {
     color: rgba(67, 255, 42, 0.938);
 }
+
+.section-title {
+    padding-left: 2.5%;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-block: 1rem;
+}
