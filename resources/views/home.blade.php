@@ -1,15 +1,16 @@
 @extends('layouts.main-layout')
-  @section('content')
-    <div class="container">
-      
-      @include('componentes.slider-top')
 
-      @include('componentes.random-articles') 
+@section('content')
+  <div class="container">
+    
+    @include('componentes.slider-top')
 
-      @include('componentes.categorias')
+    @include('componentes.random-articles') 
 
-      @include('componentes.random-articles-slider') 
+    @include('componentes.categorias')
 
-    </div>
-  @endsection
+    @include('componentes.random-articles-slider') 
+
+  </div>
+@endsection
 

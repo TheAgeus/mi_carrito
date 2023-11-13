@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="{{asset('css/slider/categoria-slider.css') }}">
 
+<div class="section-title">
+    Categorías.
+</div>
 
 <div class="categoria-slider-container">
     <div class="next-button my-slider-btn">Next</div>
@@ -16,7 +19,7 @@
             <div class="categoria-slide">
                 @foreach ($slide as $item)
                     <div class="categoria-container">
-                        <a class="hidden-link" href="/categorias/{{$item->id}}"></a>
+                        <a class="hidden-link" href="/categoria/{{$item->id}}"></a>
                         <div class="categoria-img-container">
                             <img src="{{env('APP_URL') . '/storage/images/categorias/' . $item->img_path }}" alt="">
                         </div>

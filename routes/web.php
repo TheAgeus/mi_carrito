@@ -24,6 +24,8 @@ use App\Http\Controllers\ProductoController;
  Route::get('/home', [App\Http\Controllers\nonAuthHomeController::class, 'index'])->name('index');
 
  Route::get('/producto/{id}', [App\Http\Controllers\ProductoController::class, 'showProducto'])->name('showProducto');
+ Route::get('/categoria/{id}', [App\Http\Controllers\CategoriaController::class, 'showCategoria'])->name('showCategoria');
+ Route::get('/categorias/', [App\Http\Controllers\CategoriaController::class, 'showCategorias'])->name('showCategorias');
 
 
 // Email verification
