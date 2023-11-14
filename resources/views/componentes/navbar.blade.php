@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="{{asset('css/navbar/navbar.css') }}">
 
 <div class="nav_container">
@@ -34,9 +33,6 @@
                         <button type="submit">Cerrar sesión</button>
                     </form>
                 </li>
-               
-                
-                
             @endguest
     
         </ul>
