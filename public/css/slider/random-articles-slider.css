@@ -105,3 +105,13 @@
     border-radius: 100%;
     box-shadow: 1px 1px 10px black;
 }
+
+@media (width < 700px) {
+    .random-article-slide {
+        flex-direction: column;
+    }
+    .random-article-container {
+        min-width: 300px;
+        margin-inline: auto;
+    }
+}

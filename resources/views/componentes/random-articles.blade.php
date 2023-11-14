@@ -5,6 +5,7 @@
         margin-inline: auto;
         gap: 0.5rem;
         margin-block: 2rem 5rem;
+        flex-wrap: wrap;
     }
     .producto-nonSlider-card {
         flex: 1;
@@ -39,6 +40,12 @@
         height: 100%;
         z-index: 10;
         position: absolute;
+    }
+
+    @media(width < 700px){
+        .producto-nonSlider-card {
+            min-width: 300px
+        }
     }
 </style>
 

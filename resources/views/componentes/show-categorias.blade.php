@@ -8,10 +8,17 @@
             margin-inline: auto;
             column-gap: 0.5rem;
             row-gap: 2rem;
+            justify-content: center;
         }
         .categorias-container-categorias .categoria-container {
             width: 100%;
         }
+        @media (width < 700px) {
+            .categorias-container-categorias {
+                grid-template-columns: repeat(auto-fill, 300px); 
+            }
+        }
+}
 
 </style>
 

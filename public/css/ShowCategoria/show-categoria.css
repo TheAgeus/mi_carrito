@@ -5,6 +5,7 @@
     margin-inline: auto;
     column-gap: 0.5rem;
     row-gap: 2rem;
+    justify-content: center;
 }
 
 .hidden-link {
@@ -16,4 +17,10 @@
 
 .categoria-productos-container .random-article-container {
     width: 100%;
+}
+
+@media (width < 700px) {
+    .categoria-productos-container {
+        grid-template-columns: repeat(auto-fill, 300px); 
+    }
 }

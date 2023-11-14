@@ -87,3 +87,13 @@
     cursor: pointer;
     background-color: rgba(198, 255, 198, 0.8);
 }
+
+@media (width < 700px) {
+    .categoria-slide {
+        flex-direction: column;
+    }
+    .categoria-container{
+        min-width: 300px;
+        margin-inline: auto;
+    }
+}

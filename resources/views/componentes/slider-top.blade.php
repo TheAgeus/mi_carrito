@@ -24,4 +24,19 @@
 
 </div>
 
+<div class="slider-movil">
+
+    <div class="slider-movil-slide-container">
+        <div class="slider-movil-slide" style="background-color: rgba(255,0,0,0.2);"></div>
+        <div class="slider-movil-slide" style="background-color: rgba(100,0,0,0.2);"></div>
+        <div class="slider-movil-slide" style="background-color: rgba(0,0,0,0.2);"></div>
+    </div>
+
+    <ul class="slider-movil-puntos">
+        <li class="slider-movil-punto"></li>
+        <li class="slider-movil-punto"></li>
+        <li class="slider-movil-punto"></li>
+    </ul>
+</div>
+
 <script type="text/javascript" src="{{asset('js/slider.js')}}"></script>
