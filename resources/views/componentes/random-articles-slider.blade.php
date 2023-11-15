@@ -23,7 +23,7 @@
                             <img src="{{env('APP_URL') . '/storage/images/productos/' . $random_article->img_path}}" alt="">
                         </div>
                         <div class="agregar-random-article-to-card-btn-container">
-                            <button type="submit">Agregar +</button>
+                            <button class="add-product-btn" type="submit">Agregar +</button>
                         </div>
 
                         <div class="random-article-text">

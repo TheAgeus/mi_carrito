@@ -93,6 +93,9 @@
                     @livewire('home.categoriadropdown', ['categorias' => $categorias])
                 @endif
                 <li class="nav-item ms-3">
+                  <a class="nav-link" href="{{ route('MisCompras') }}">Mis Compras</a>
+                </li>
+                <li class="nav-item ms-3">
                     <a class="nav-link" href="{{ route('index') }}">Productos</a>
                 </li>
             </ul>
