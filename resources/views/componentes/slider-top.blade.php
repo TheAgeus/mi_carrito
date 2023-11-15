@@ -27,9 +27,15 @@
 <div class="slider-movil">
 
     <div class="slider-movil-slide-container">
-        <div class="slider-movil-slide" style="background-color: rgba(255,0,0,0.2);"></div>
-        <div class="slider-movil-slide" style="background-color: rgba(100,0,0,0.2);"></div>
-        <div class="slider-movil-slide" style="background-color: rgba(0,0,0,0.2);"></div>
+        <div class="slider-movil-slide">
+            <img src="{{env('APP_URL') . '/storage/images/slider-movil/slide1.png' }}" alt="">
+        </div>
+        <div class="slider-movil-slide">
+            <img src="{{env('APP_URL') . '/storage/images/slider-movil/slide2.png' }}" alt="">
+        </div>
+        <div class="slider-movil-slide">
+            <img src="{{env('APP_URL') . '/storage/images/slider-movil/slide3.png' }}" alt="">
+        </div>
     </div>
 
     <ul class="slider-movil-puntos">
