@@ -48,45 +48,81 @@
     }
     @media(width < 700px) {
         .carrito-list-container{
-            width: 90%;
-            right: -90%;
+            width: 100%;
+            right: -100%;
         }
     }
     .carrito-item {
         display: flex;
-        justify-content:space-evenly;
+        padding-block: 0.5rem;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
     }
+    .carrito-item img {
+        width: 2rem;
+        height: unset;
+        padding-inline: 1rem;
 
+    }
+    .carrito-item a {
+        flex: 2;
+        padding-inline: 1rem;
+    }
+    .carrito-item .controls {
+        display: flex;
+    }
+    .item-total {
+        flex: 1;
+        text-align: right;
+        padding-right: 1rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    .item-cantidad {
+        padding-inline: 0.5rem;
+    }
     .carrito-list-btn {
         width: 1rem;
         height: 1rem;
         background-color: white;
         border-radius: 100%;
+        box-shadow: 1px 1px 3px black;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .close-carrito-list-btn{
-        border-radius: 20px;
+        border-radius: 10px;
         margin-block: 1rem;
     }
     .carrito-list-list-container {
         height: 95%;
-        padding-block: 1rem;
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
+        overflow: scroll;
     }
     .carrito-list-footer{
        display: flex;
        align-items: center;
-       justify-content: center;
+       justify-content: space-around;
+       border-top: 1px solid black;
     }
     .close-carrito-list-btn {
         border:1px solid rgba(0,0,0,0.2);
-        padding: 0.2rem;
+        padding-block: 0.2rem;
+        padding-inline: 0.5rem;
         text-align: center;
         background-color: black;
         color: rgb(225, 225, 225);
     }
+    .pagar-carrito-list-btn {
+        background-color: green;
+        color: white;
+        padding-block: 0.2rem;
+        padding-inline: 0.5rem;
+        border-radius: 10px;
+    }
     .close-carrito-list-btn:hover {cursor: pointer;}
+    .pagar-carrito-list-btn:hover {cursor: pointer;}
     .carrito-list-btn{cursor: pointer;}
 </style>
 
@@ -99,18 +135,11 @@
 <div class="carrito-list-container">
     
     <div class="carrito-list-list-container">
-        <div class="carrito-item">
-            <img src="" alt="">
-            <div class="carrito-item-name">
-                Un nombre muy largo
-            </div>
-            <div class="increment-btn carrito-list-btn">+</div>
-            <div class="item-cantidad">1</div>
-            <div class="decrement-btn carrito-list-btn">-</div>
-        </div>
     </div>
 
     <div class="carrito-list-footer">
         <div class="close-carrito-list-btn">Cerrar</div>
+        <div class="pagar-carrito-list-btn">Pagar</div>
+        <div class="total-total-carrito">Total: $0 mx</div>
     </div>
 </div>
