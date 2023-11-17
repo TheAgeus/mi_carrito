@@ -69,6 +69,9 @@ Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(f
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
+    Route::get('/paypal/pay', [App\Http\Controllers\PaymentController::class, 'payWithPaypal']);
+    Route::get('/paypal/status', [App\Http\Controllers\PaymentController::class, 'payPalStatus']);
+
     Route::get('/micarrito', [App\Http\Controllers\CarritoController::class, 'index'])->name('micarrito');
     
     // No tendré nada aquí, solo redireccionar

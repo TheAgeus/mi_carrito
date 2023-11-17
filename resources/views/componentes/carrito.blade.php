@@ -139,7 +139,7 @@
 
     <div class="carrito-list-footer">
         <div class="close-carrito-list-btn">Cerrar</div>
-        <div class="pagar-carrito-list-btn">Pagar</div>
+        <div class="pagar-carrito-list-btn"><a href="{{ url('/paypal/pay') }}">Pagar</a></div>
         <div class="total-total-carrito">Total: $0 mx</div>
     </div>
 </div>
