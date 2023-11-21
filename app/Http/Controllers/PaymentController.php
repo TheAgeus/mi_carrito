@@ -49,39 +49,43 @@ class PaymentController extends Controller
 
 
 
-    public function createOrder($cart)
+    public function createOrder($order)
     {
-        try {
-            $accessToken = generateAccessToken();
-            $url = 'https://api.sandbox.paypal.com/v2/checkout/orders';
 
-            $payload = [
-                'intent' => 'CAPTURE',
-                'purchase_units' => [
-                    [
-                        'amount' => [
-                            'currency_code' => 'MXN',
-                            'value' => '1.00', // You may need to calculate this based on your cart information
-                        ],
+        dd($order);
+
+        $accessToken = $this->generateAccessToken();
+        $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders';
+
+        $payload = [
+            'intent' => 'CAPTURE',
+            'purchase_units' => [
+                [
+                    'amount' => [
+                        'currency_code' => 'MXN',
+                        'value' => '100.00', // You may need to calculate this based on your cart information
                     ],
                 ],
-            ];
+            ],
+            'payment_source' => {
+                [paymentSource]: {}
+            }
+        ];
 
-            $client = new Client();
+        $client = new Client();
 
-            $response = $client->post($url, [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $accessToken,
-                ],
-                'json' => $payload,
-            ]);
 
-            return handleResponse($response);
-        } catch (\Exception $e) {
-            // Handle the exception
-            \Log::error("Failed to create order: " . $e->getMessage());
-        }
+        $response = $client->post($url, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+            'json' => $payload,
+        ]);
+
+
+        return $this->handleResponse($response);
+
     }
 
     public function handleResponse($response)
@@ -91,10 +95,36 @@ class PaymentController extends Controller
         $statusCode = $response->getStatusCode();
         $body = $response->getBody()->getContents();
 
-        dd($response);
-
         return json_decode($body, true); // Assuming the response is in JSON format
     }
 
+ 
 
+    public function captureOrder($orderId)
+    {
+        return $orderId;
+        try {
+            $accessToken = generateAccessToken();
+            $url = 'https://api-m.sandbox.paypal.com/v2/checkout/orders/' . $orderId . '/capture';
+            
+            // Implement logic to capture the order with $orderId
+
+            // For example:
+            // $capturedOrder = YourOrderModel::find($orderId);
+            // $capturedOrder->capture(); // Assuming capture() is a method in your model
+            $client = new Client();
+
+            $response = $client->post($url, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $accessToken,
+                ],
+            ]);
+
+            return $this->handleResponse($response);
+            
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to capture order.'], 500);
+        }
+    }
 }
