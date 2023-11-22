@@ -121,6 +121,12 @@
         padding-inline: 0.5rem;
         border-radius: 10px;
     }
+    .pagar-carrito-list-btn > a {
+        text-decoration: none;
+        padding-block: 0.2rem;
+        padding-inline: 0.5rem;
+        color: white;
+    }
     .close-carrito-list-btn:hover {cursor: pointer;}
     .pagar-carrito-list-btn:hover {cursor: pointer;}
     .carrito-list-btn{cursor: pointer;}

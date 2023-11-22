@@ -20,12 +20,12 @@ class ProductoFactory extends Factory
         return [
             'name' => fake()->name(),
             'categoria_id' => fake()->numberBetween($min = 1, $max = 12),
-            'precio_mx'=> fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20000.00),
+            'precio_mx'=> fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20.00),
             'stock'=>fake()->numberBetween($min = 1, $max = 500),
             'usuario_id'=>fake()->numberBetween($min = 2, $max = 3),
             'codigo_proveedor' => Str::random(5),
             'proveedor' => fake()->company(),
-            'precio_proveedor' => fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20000.00)
+            'precio_proveedor' => fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20.00)
         ];
     }
 }

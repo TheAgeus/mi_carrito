@@ -6,9 +6,54 @@
     <title>PayPal JS SDK Standard Integration</title>
   </head>
   <body>
-    <div id="paypal-button-container"></div>
-    <p id="result-message"></p>
-    <!-- Replace the "test" client-id value with your client-id -->
+
+    <style>
+        .paypal-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .carrito-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1rem;
+            margin-block: 1rem;
+        }
+        img {
+            min-width: 20px;
+            max-width: 200px;
+            flex: 1;
+        }
+        a {
+            flex: 2;
+        }
+        .item-cantidad {
+            flex: 2;
+        }
+        .item-total {
+            flex: 2;
+        }
+    </style>
+
+    <div class="paypal-container">
+
+        <div class="paypal-carrito-list">
+
+        </div>
+
+        <div class="total-total-carrito">
+
+        </div>
+
+        <div id="paypal-button-container"></div>
+        <p id="result-message"></p>
+    </div>
+
+
    
     <script src="https://www.paypal.com/sdk/js?client-id=ASRylTwsN8rQTGb1eekEovs-my9xQgJ3EpjWu-OA2p5Y2oK28dkiq2niKAHfv4Dkv7T74e-UkIN49hj6&currency=MXN&disable-funding=credit,card"></script>
     <script>
@@ -127,6 +172,32 @@
 
 
     </script>
+    <script type="text/javascript" src="{{asset('js/add-product-btn.js')}}"></script>
+    <script>
 
+        total = 0;
+        cartArray = cartArray.filter(obj => obj.cantidad !== 0);
+
+        const paypal_total_carrito = document.querySelector('.total-total-carrito')
+        const paypal_carrito_list = document.querySelector('.paypal-carrito-list')
+        
+        if(cartArray != null) {
+            if (cartArray.length > 0) {
+                cartArray.forEach (producto => {
+                    let newProduct = document.createElement('div')
+                    newProduct.classList.add('carrito-item')
+                    newProduct.innerHTML = `
+                        <img src="${producto.imagenProducto}" alt="">
+                        <a href="${producto.hrefProducto}" class="carrito-item-name">${producto.nombreProducto}</a>
+                        <div class="item-cantidad">Cantidad: ${producto.cantidad}</div>
+                        <div class="item-total">Total item: $${(producto.cantidad * producto.precioProducto).toFixed(2)} mx</div>
+                    `
+                    paypal_carrito_list.appendChild(newProduct)
+                    total = total + (producto.cantidad * producto.precioProducto)
+                })
+                paypal_total_carrito.innerHTML = `Total: $${total.toFixed(2)} mx`
+            }
+        }
+    </script>
   </body>
 </html>

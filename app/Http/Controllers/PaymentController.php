@@ -66,10 +66,7 @@ class PaymentController extends Controller
                         'value' => '100.00', // You may need to calculate this based on your cart information
                     ],
                 ],
-            ],
-            'payment_source' => {
-                [paymentSource]: {}
-            }
+            ]
         ];
 
         $client = new Client();
