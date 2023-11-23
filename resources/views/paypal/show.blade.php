@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal JS SDK Standard Integration</title>
-  </head>
-  <body>
+@extends('layouts.main-layout')
+
+@section('content')
 
     <style>
         .paypal-container {
@@ -21,7 +16,9 @@
             justify-content: flex-start;
             align-items: center;
             gap: 1rem;
-            margin-block: 1rem;
+            padding-block: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            flex-wrap: wrap;
         }
         img {
             min-width: 20px;
@@ -36,6 +33,9 @@
         }
         .item-total {
             flex: 2;
+        }
+        .total-total-carrito {
+            margin-block: 1rem;
         }
     </style>
 
@@ -174,7 +174,7 @@
     </script>
     <script type="text/javascript" src="{{asset('js/add-product-btn.js')}}"></script>
     <script>
-
+    async function showCart() {
         total = 0;
         cartArray = cartArray.filter(obj => obj.cantidad !== 0);
 
@@ -183,6 +183,18 @@
         
         if(cartArray != null) {
             if (cartArray.length > 0) {
+
+                // validar el stock
+                const response = await fetch("/api/validate-stock", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(cartArray),
+                });
+                const orderData = await response.json();
+                console.log(orderData)
+
                 cartArray.forEach (producto => {
                     let newProduct = document.createElement('div')
                     newProduct.classList.add('carrito-item')
@@ -197,7 +209,12 @@
                 })
                 paypal_total_carrito.innerHTML = `Total: $${total.toFixed(2)} mx`
             }
+        
         }
+    }
+    
+    showCart()
+        
     </script>
-  </body>
-</html>
+
+@endsection

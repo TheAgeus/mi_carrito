@@ -28,4 +28,9 @@ class ProductoController extends Controller
             'comentarios' => $comentarios,
         ]);
     }
+
+    public function validateStock(Request $request) {
+        $data = json_decode($request->getContent());
+        return $data;
+    }
 }

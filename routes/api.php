@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('orders', [PaymentController::class, 'createOrder']);
 Route::post('orders/{orderId}/capture', [PaymentController::class, 'captureOrder']);
+
+
+Route::post('validate-stock', [ProductoController::class, 'validateStock']);

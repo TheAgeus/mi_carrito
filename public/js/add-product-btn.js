@@ -31,6 +31,13 @@ const increment_cart_count = () => {
     cartCounter = currentCount
 }
 
+const decrement_cart_count = () => {
+    currentCount = parseInt(carrito_count_element.innerHTML);
+    currentCount = currentCount - 1;
+    carrito_count_element.innerHTML = currentCount;
+    cartCounter = currentCount
+}
+
 const refreshCounter = () => {
     carrito_count_element.innerHTML = cartCounter;
 }
@@ -58,11 +65,15 @@ const incrementQuantity = (producto_name, tipo) => {
     let position = cartArray.findIndex((value) => value.nombreProducto === producto_name);
     if(tipo === "incremento") {
         cartArray[position].cantidad = cartArray[position].cantidad + 1
+        increment_cart_count()
     }
     else if (tipo === "decremento") {
         cartArray[position].cantidad = cartArray[position].cantidad - 1
+        decrement_cart_count()
     }
 
+    saveCart()
+    saveCounterToMemory() 
     renderCarritoListHtml()
 }
 
@@ -91,12 +102,17 @@ const renderCarritoListHtml = () => {
         })
         total_carrito.innerHTML = `Total: $${total.toFixed(2)} mx`
     }
+    else {
+        total_carrito.innerHTML = `Total: $0 mx`
+    }
 }
 
 if (add_products_buttons != null) {
     add_products_buttons.forEach((button, i) => {
         add_products_buttons[i].addEventListener('click', function(e) {
     
+            
+
             // get data from html
             producto_name = e.target.parentNode.nextElementSibling.querySelector('a').text.replace(/\\n/g, '').trim()
             producto_img_src = e.target.parentNode.previousElementSibling.querySelector('img').getAttribute('src')
