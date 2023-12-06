@@ -37,6 +37,9 @@
         .total-total-carrito {
             margin-block: 1rem;
         }
+        .address_input {
+            margin-block: 1rem;
+        }
     </style>
 
     <div class="paypal-container">
@@ -47,6 +50,10 @@
         <div class="total-total-carrito">
         </div>
 
+        <div class="address_input">
+            <input id="address_input" type="text" placeholder="Dirección" required>
+        </div>
+
         <div id="paypal-button-container"></div>
         <p id="result-message"></p>
     </div>
@@ -55,9 +62,20 @@
    
     <script src="https://www.paypal.com/sdk/js?client-id=ASRylTwsN8rQTGb1eekEovs-my9xQgJ3EpjWu-OA2p5Y2oK28dkiq2niKAHfv4Dkv7T74e-UkIN49hj6&currency=MXN&disable-funding=credit,card"></script>
     <script>
+
+
+
         window.paypal
             .Buttons({
                 async createOrder(data, actions) {
+                    
+                    address = document.getElementById("address_input").value
+                    if( address === "" ){
+                        alert("No has escrito la dirección")
+                        return
+                    }
+                        
+                    
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
@@ -65,93 +83,39 @@
                             }
                         }]
                     })
-                    /*try {
-                            const response = await fetch("/api/orders", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            // use the "body" param to optionally pass additional order information
-                            // like product ids and quantities
-                            body: JSON.stringify({
-                                cart: [
-                                    {
-                                        id: "YOUR_PRODUCT_ID",
-                                        quantity: "YOUR_PRODUCT_QUANTITY",
-                                    },
-                                ],
-                            }),
-                        });
-                        
-                        const orderData = await response.json();
-                        
-
-                        if (orderData.id) {
-                            return orderData.id;
-                        } else {
-                        const errorDetail = orderData?.details?.[0];
-                        const errorMessage = errorDetail
-                            ? `${errorDetail.issue} ${errorDetail.description} (${orderData.debug_id})`
-                            : JSON.stringify(orderData);
-                        
-                        throw new Error(errorMessage);
-                        }
-                    } catch (error) {
-                        console.error(error);
-                        resultMessage(`Could not initiate PayPal Checkout...<br><br>${error}`);
-                    }*/
-
                 },
 
                 async onApprove(data, actions) {
-                    /*try {
-                        const response = await fetch("/api/orders/" + data.orderID + "/capture", {
+                    actions.order.capture().then(async function (detalles){
+                        console.log(detalles);
+
+                        const data = {
+                            id_movimiento: detalles.id,
+                            id_usuario:  {{Auth()->user()->id}},
+                            monto: detalles.purchase_units[0].amount.value,
+                            address: address,
+                            items: cartArray
+                        }
+
+                        const response = await fetch("/save_success_sale", {
                             method: "POST",
                             headers: {
-                                "Content-Type": "application/json",
+                                "Content-type" : "application/json"
                             },
+                            body: JSON.stringify(data),
+                        })
+
+                        .then(response => response.json())
+                        .then(responseData => {
+                            // Handle the response data from Laravel
+                            console.log('Response from Laravel:', responseData);
+
+                            // You can perform further actions based on the response
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            // Handle errors here
                         });
-                        
-                        const orderData = await response.json();
-                        // Three cases to handle:
-                        //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                        //   (2) Other non-recoverable errors -> Show a failure message
-                        //   (3) Successful transaction -> Show confirmation or thank you message
-                        
-                        const errorDetail = orderData?.details?.[0];
-                        
-                        if (errorDetail?.issue === "INSTRUMENT_DECLINED") {
-                        // (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                        // recoverable state, per https://developer.paypal.com/docs/checkout/standard/customize/handle-funding-failures/
-                        return actions.restart();
-                        } else if (errorDetail) {
-                        // (2) Other non-recoverable errors -> Show a failure message
-                        throw new Error(`${errorDetail.description} (${orderData.debug_id})`);
-                        } else if (!orderData.purchase_units) {
-                        throw new Error(JSON.stringify(orderData));
-                        } else {
-                        // (3) Successful transaction -> Show confirmation or thank you message
-                        // Or go to another URL:  actions.redirect('thank_you.html');
-                        const transaction =
-                            orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
-                            orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
-                        resultMessage(
-                            `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
-                        );
-                        console.log(
-                            "Capture result",
-                            orderData,
-                            JSON.stringify(orderData, null, 2),
-                        );
-                        }
-                    } catch (error) {
-                        console.error(error);
-                        resultMessage(
-                        `Sorry, your transaction could not be processed...<br><br>${error}`,
-                        );
-                    }*/
-                    actions.order.capture().then(function (detalles){
-                        console.log(detalles)
                     })
                 },
 

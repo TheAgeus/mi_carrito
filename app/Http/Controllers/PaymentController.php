@@ -13,6 +13,9 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Payment;
 use GuzzleHttp\Client;
 
+use App\Models\Payment as Pago;
+use App\Models\Item;
+
 class PaymentController extends Controller
 {
 
@@ -124,4 +127,37 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Failed to capture order.'], 500);
         }
     }
+
+    public function save_success_sale(Request $request) {
+       
+        $requestData = $request->all();
+
+        try{
+            $pago = new Pago();
+            $pago->id_movimiento = $requestData['id_movimiento'];
+            $pago->id_usuario = $requestData['id_usuario'];
+            $pago->monto = $requestData['monto'];
+            $pago->address = $requestData['address'];
+            $pago->save();
+
+            foreach($requestData['items'] as $item) {
+
+                $item_db = new Item();
+                $item_db->pago_id = $pago->id;
+                $item_db->productoName = $item['nombreProducto'];
+                $item_db->cantidad = $item['cantidad'];
+                $item_db->precio = $item['precioProducto'];
+                $item_db->save();
+            }
+         }
+         catch(\Exception $e){
+            return response()->json([
+                'error' => $e->getMessage(),
+            ]);
+         }
+         return response()->json([
+            'success' => 'pago registrado con exito',
+        ]);
+    }
+
 }

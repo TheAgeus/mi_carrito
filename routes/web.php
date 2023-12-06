@@ -86,10 +86,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // Stripe
     Route::get('Stripe', [App\Http\Controllers\StripeController::class, 'index'])->name('StripeIndex');
-    
     Route::post('Stripe', [App\Http\Controllers\StripeController::class, 'stripePost'])->name('stripe.post');
 
+    // Salvar la venta en la base de datos
+    
 });    
+Route::post('/save_success_sale', [App\Http\Controllers\PaymentController::class, 'save_success_sale']);
 
 
 Route::middleware(['auth', 'verified'])->group(function() {
