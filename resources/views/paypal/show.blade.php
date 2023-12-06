@@ -42,11 +42,9 @@
     <div class="paypal-container">
 
         <div class="paypal-carrito-list">
-
         </div>
 
         <div class="total-total-carrito">
-
         </div>
 
         <div id="paypal-button-container"></div>
@@ -63,7 +61,7 @@
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: 69
+                                value: total
                             }
                         }]
                     })
