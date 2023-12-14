@@ -9,7 +9,7 @@ class Item extends Model
 {
     use HasFactory;
     protected $table = 'pago_items';
-
+    public $timestamps = false;
     protected $fillable = [
         'pago_id',
         'productoName',

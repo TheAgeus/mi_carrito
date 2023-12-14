@@ -153,6 +153,8 @@ class PaymentController extends Controller
          catch(\Exception $e){
             return response()->json([
                 'error' => $e->getMessage(),
+                'request' => $requestData,
+                'items' => $requestData['items']
             ]);
          }
          return response()->json([

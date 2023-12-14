@@ -62,9 +62,6 @@
    
     <script src="https://www.paypal.com/sdk/js?client-id=ASRylTwsN8rQTGb1eekEovs-my9xQgJ3EpjWu-OA2p5Y2oK28dkiq2niKAHfv4Dkv7T74e-UkIN49hj6&currency=MXN&disable-funding=credit,card"></script>
     <script>
-
-
-
         window.paypal
             .Buttons({
                 async createOrder(data, actions) {
@@ -74,8 +71,7 @@
                         alert("No has escrito la dirección")
                         return
                     }
-                        
-                    
+
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
@@ -107,14 +103,13 @@
 
                         .then(response => response.json())
                         .then(responseData => {
-                            // Handle the response data from Laravel
-                            console.log('Response from Laravel:', responseData);
-
-                            // You can perform further actions based on the response
+                            if (responseData['success'] == 'pago registrado con exito') {
+                                localStorage.clear()
+                                window.location.href='/mis_compras';
+                            }
                         })
                         .catch(error => {
                             console.error('Error:', error);
-                            // Handle errors here
                         });
                     })
                 },
