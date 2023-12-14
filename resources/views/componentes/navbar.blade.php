@@ -43,7 +43,7 @@
             @else
                 @if(Auth()->user()->role == 'admin' or Auth()->user()->role == 'inventarios')
                     <li class="">
-                        <a class="" style="color: rgb(255, 71, 71); font-weight: bold;" href="{{ route('productos.index') }}">Admin panel</a>
+                        <a class="" style="color: rgb(255, 71, 71); font-weight: bold;" href="{{ route('admin.panel') }}">Admin panel</a>
                     </li>
                 @endif
             @endguest
@@ -63,7 +63,7 @@
                 <a href="/">Trabaja con nosotros</a>
             </li>
             <li class="">
-                <a href="/">Proveedores</a>
+                <a href="/mis_compras">Mis compras</a>
             </li>
         </ul>
     </div>
