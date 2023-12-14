@@ -82,6 +82,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // Mis compras
     Route::get('MisCompras', [App\Http\Controllers\CarritoController::class, 'MisCompras'])->name('MisCompras');
+    Route::get('mis_compras', [App\Http\Controllers\PaymentController::class, 'mis_compras'])->name('mis_compras');
     
     
     // Stripe
@@ -99,4 +100,4 @@ Route::middleware(['auth', 'verified'])->group(function() {
 });
 
 
-Route::get('/test_route', [App\Http\Controllers\StripeController::class, 'test_stripe'])->name('stripe.test');
+

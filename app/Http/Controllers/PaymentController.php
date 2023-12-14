@@ -50,8 +50,6 @@ class PaymentController extends Controller
         }
     }
 
-
-
     public function createOrder($order)
     {
 
@@ -97,8 +95,6 @@ class PaymentController extends Controller
 
         return json_decode($body, true); // Assuming the response is in JSON format
     }
-
- 
 
     public function captureOrder($orderId)
     {
@@ -159,6 +155,17 @@ class PaymentController extends Controller
          }
          return response()->json([
             'success' => 'pago registrado con exito',
+        ]);
+    }
+
+    public function mis_compras()
+    {
+        // Get all data to be displayed (Pagos con sus respectivos Items)
+        $user_id = Auth()->user()->id;
+        $pagos = Pago::where('id_usuario', $user_id)->get();
+        
+        return view('pagos.mis_compras', [
+            'pagos' => $pagos
         ]);
     }
 

@@ -33,4 +33,6 @@ class ProductoController extends Controller
         $data = json_decode($request->getContent());
         return $data;
     }
+
+
 }
