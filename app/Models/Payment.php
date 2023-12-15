@@ -38,7 +38,7 @@ class Payment extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(Item::class, 'id_usuario');
+        return $this->hasMany(Item::class, 'pago_id');
     }
 
 }

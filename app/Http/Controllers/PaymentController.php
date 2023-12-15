@@ -137,13 +137,18 @@ class PaymentController extends Controller
             $pago->save();
 
             foreach($requestData['items'] as $item) {
-
                 $item_db = new Item();
                 $item_db->pago_id = $pago->id;
                 $item_db->productoName = $item['nombreProducto'];
                 $item_db->cantidad = $item['cantidad'];
                 $item_db->precio = $item['precioProducto'];
                 $item_db->save();
+
+                // bajar stock
+                $producto = $item_db->producto;
+                $stock = $producto->stock;
+                $new_stock = $stock - $item_db->cantidad;
+                $producto->update(['stock' => $new_stock]);
             }
          }
          catch(\Exception $e){
@@ -166,6 +171,17 @@ class PaymentController extends Controller
         
         return view('pagos.mis_compras', [
             'pagos' => $pagos
+        ]);
+    }
+
+    public function mi_compra($id)
+    {
+        $compra = Pago::find($id);
+        $items = $compra->items;
+
+        return view('pagos.mi_compra', [ 
+            'compra' => $compra,
+            'items' => $items,
         ]);
     }
 

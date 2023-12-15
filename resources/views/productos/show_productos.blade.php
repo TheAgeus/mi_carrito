@@ -1,13 +1,17 @@
-<link rel="stylesheet" href="{{asset('css/ShowCategoria/show-categoria.css') }}">
-<link rel="stylesheet" href="{{asset('css/slider/random-articles-slider.css') }}">
+@extends('layouts.main-layout')
+@section('content')
 
+<div class="container">
 
-
-<div class="section-title">
-    CATEGORÍA: {{ $categoria_name }}
-</div>
+    <link rel="stylesheet" href="{{asset('css/ShowCategoria/show-categoria.css') }}">
+    <link rel="stylesheet" href="{{asset('css/slider/random-articles-slider.css') }}">
+    @include('componentes.carrito')
+    @if(count($Productos) == 0)
+        <h1 style="padding-inline: 5%;">No se encontraron resultados...</h1>
+    @endif
     <div class="categoria-productos-container">
-        @foreach($productos_categoria as $random_article)
+        
+        @foreach($Productos as $random_article)
             <div class="random-article-container">
                 <div class="random-article-img-container">
                     <a href="/producto/{{$random_article->id}}" class="hidden-link"></a>
@@ -44,6 +48,8 @@
         @endforeach
     </div>
 
+    <script type="text/javascript" src="{{asset('js/add-product-btn.js')}}"></script>
 
+</div>
 
-<script type="text/javascript" src="{{asset('js/show-categoria.js')}}"></script>
+@endsection

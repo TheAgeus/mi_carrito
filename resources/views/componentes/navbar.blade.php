@@ -7,7 +7,8 @@
         </div>
     
         <div class="search_bar">
-            <form action="">
+            <form action="/buscar" method="POST">
+                @csrf
                 <input type="text" name="buscar" placeholder="Buscar..." id="buscar">
                 <button class="buscar-button" type="submit">
                     <img class="buscar-icon" src="{{env('APP_URL') . '/storage/images/icons/buscar.png'}}" alt="">

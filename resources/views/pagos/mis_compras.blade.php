@@ -13,6 +13,9 @@
                 Fecha: <br> {{ $pago->fecha() }}
             </span>
             <span>
+                Dirección: <br> {{ $pago->address }}
+            </span>
+            <span>
                 Cantidad de articulos: {{ $pago->cantidad_total() }}
             </span>
         </div>

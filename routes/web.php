@@ -83,7 +83,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Mis compras
     Route::get('MisCompras', [App\Http\Controllers\CarritoController::class, 'MisCompras'])->name('MisCompras');
     Route::get('mis_compras', [App\Http\Controllers\PaymentController::class, 'mis_compras'])->name('mis_compras');
-    
+    Route::get('mis_compras/{id}', [App\Http\Controllers\PaymentController::class, 'mi_compra'])->name('mi_compra');
     
     // Stripe
     Route::get('Stripe', [App\Http\Controllers\StripeController::class, 'index'])->name('StripeIndex');
@@ -98,6 +98,8 @@ Route::post('/save_success_sale', [App\Http\Controllers\PaymentController::class
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::post('agregar_comentario', [App\Http\Controllers\ComentarioController::class, 'store'])->name('agregar_comentario');
 });
+
+Route::post('/buscar', [App\Http\Controllers\ProductoController::class, 'buscar'])->name('buscar_producto');
 
 
 

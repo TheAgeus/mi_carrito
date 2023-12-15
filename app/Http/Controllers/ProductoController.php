@@ -31,8 +31,31 @@ class ProductoController extends Controller
 
     public function validateStock(Request $request) {
         $data = json_decode($request->getContent());
-        return $data;
+
+        $errors=array();
+        
+
+        foreach($data as $item) {
+            $cantidad = $item->cantidad;
+            $nombreProducto = $item->nombreProducto;
+            $cantidad_en_stock = Producto::where('name', $nombreProducto)->get('stock')[0]['stock'];
+            
+            if ($cantidad_en_stock - $cantidad < 0) {
+                $error = "No hay suficiente stock para: " . $nombreProducto . " \nstock disponible: " . $cantidad_en_stock;
+                array_push($errors, $error);
+            }
+        }
+
+        return $errors;
     }
 
+    public function buscar(Request $request) 
+    {
+        $keyword = $request->all()['buscar'];
+        $Productos = Producto::where('name', 'like', '%' . $keyword . '%')->get();
+        return view('productos.show_productos', [
+            'Productos' => $Productos
+        ]);
+    }
 
 }

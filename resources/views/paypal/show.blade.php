@@ -150,7 +150,17 @@
                     body: JSON.stringify(cartArray),
                 });
                 const orderData = await response.json();
-                console.log(orderData)
+                
+                // Si este arreglo tiene algo, hay error, desplegarlo y redirigir a inicio
+                cantidad_errores = orderData.length
+                mensaje = "No se puede prosegur porque:" + "\n"
+                if (cantidad_errores > 0) {
+                    orderData.forEach (error => {
+                        mensaje = mensaje + error + "\n"
+                    })
+                    alert(mensaje)
+                    window.location.href='/';
+                }
 
                 cartArray.forEach (producto => {
                     let newProduct = document.createElement('div')
