@@ -17,6 +17,7 @@ class Payment extends Model
         'id_usuario',
         'monto',
         'address',
+        'estado'
     ];
 
 

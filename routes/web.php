@@ -57,7 +57,9 @@ Route::middleware(['auth', 'user-role:inventarios,admin' , 'verified'])->group(f
 
     
     // Compras realizadas
-    Route::get('AllCompras', [App\Http\Controllers\CarritoController::class, 'AllCompras'])->name('AllCompras');
+    //Route::get('AllCompras', [App\Http\Controllers\CarritoController::class, 'AllCompras'])->name('AllCompras');
+    Route::get('ventas', [App\Http\Controllers\PaymentController::class, 'ventas'])->name("admin.ventas");
+    Route::patch('ventas_cambiar_estado', [App\Http\Controllers\PaymentController::class, 'ventas_update_estado']);
 });
 
 

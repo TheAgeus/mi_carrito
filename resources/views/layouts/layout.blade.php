@@ -37,7 +37,7 @@
                             <a class="nav-link hover" href="{{route('productos.index')}}">Administrar Productos</a>
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link hover" href="{{ route('AllCompras') }}">Ver todas las Ventas</a>
+                            <a class="nav-link hover" href="{{ route('admin.ventas') }}">Ver todas las Ventas</a>
                         </li>
                     @endif
                 @endguest
@@ -108,7 +108,7 @@
                 </span>
               </a>
             @else
-              @livewire('home.carritoicon', ['usuario_id' => Auth()->user()->id])
+              
             @endguest  
     
             <a class="navbar-brand" href=""></a>

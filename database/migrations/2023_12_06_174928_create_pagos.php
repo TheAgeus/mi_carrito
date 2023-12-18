@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario');
             $table->float('monto');
             $table->string('address');
+            $table->string('estado', 50);
         });
     }
 

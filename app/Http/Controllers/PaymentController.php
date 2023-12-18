@@ -134,6 +134,7 @@ class PaymentController extends Controller
             $pago->id_usuario = $requestData['id_usuario'];
             $pago->monto = $requestData['monto'];
             $pago->address = $requestData['address'];
+            $pago->estado = "pagado";
             $pago->save();
 
             foreach($requestData['items'] as $item) {
@@ -183,6 +184,20 @@ class PaymentController extends Controller
             'compra' => $compra,
             'items' => $items,
         ]);
+    }
+
+    public function ventas() {
+        return view('pagos.ventas', [
+            'ventas' => Pago::all()
+        ]);
+    }
+
+    public function ventas_update_estado(Request $request) {
+        $data = $request->all();
+        $id = $data['pago_id'];
+        $estado = $data['estado'];
+        Pago::find($id)->update(['estado' => $estado]);
+        return redirect()->back();
     }
 
 }
