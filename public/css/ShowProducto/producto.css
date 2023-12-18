@@ -1,51 +1,18 @@
-
-.mycontainer > img {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-.mycontainer{
-        margin-inline: 1rem;
-    }
-
-@media (700px < width) {
-    .container-start{
-        padding: 1rem;
-        margin: 2px;
-        margin-top: 1rem;
-    }
-    .container-end {
-        width: 50%;
-        padding-inline: 3rem;
-    }
-    .container-end > .mycontainer{
-        margin-block: 2rem;
-    }
-
-    .fullcontainer{
-        width: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        padding-inline: 3rem;
-    }
-    
+.fullcontainer{
+    display: flex;  
+    padding-inline: 5%;
+    padding-block: 2rem;
 }
 
-@media (700px > width){
-    .container-start{
-        border: 1px solid rgba(105, 105, 105,0.5);
-
-    }
-    .fullcontainer{
-        flex-direction: column;
-    }
-    .mycontainer {
-        margin-block: 1rem;
-    }
-    .mycontainer > img {
-        width: 100%
-    }
+.product-name{
+    font-size: 1.5rem;
+}
+.precio{
+    color: rgb(229, 16, 16);
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.piezas {
+    font-size: 0.8rem;
+    color: rgb(240, 59, 59);
 }

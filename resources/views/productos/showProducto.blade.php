@@ -13,22 +13,15 @@
                 <img src="{{env('APP_URL') . '/storage/images/productos/' . $producto->img_path}}" alt="">
             </div>    
         </div>
-
         <div class="container-end">
-            <div class="mycontainer">
-                <strong>Nombre:</strong> {{$producto->name}}
+            <div class="mycontainer product-name">
+                {{$producto->name}}
             </div>
-            <div class="mycontainer">
-                <strong>Precio:</strong> {{$producto->precio_mx}} MXN
+            <div class="mycontainer precio">
+                ${{$producto->precio_mx}} MXN
             </div>
-            <div class="mycontainer">
-                <strong>Stock:</strong> {{$producto->stock}}
-            </div>
-            <div class="mycontainer">
-                <strong>Categoria:</strong> {{$producto->categoria->name}}
-            </div>
-            <div class="mycontainer">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quo rerum et, quae aliquid, aspernatur explicabo, dolore debitis odio aliquam maiores nihil quis! Quod quas magni praesentium velit. Minima, voluptate?
+            <div class="mycontainer piezas">
+                {{$producto->stock}} piezas
             </div>
         </div>
     </div>
