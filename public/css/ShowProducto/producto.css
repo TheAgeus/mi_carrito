@@ -1,18 +1,51 @@
 .fullcontainer{
     display: flex;  
+    flex-wrap: wrap;
     padding-inline: 5%;
     padding-block: 2rem;
 }
-
 .product-name{
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
 .precio{
     color: rgb(229, 16, 16);
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 .piezas {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: rgb(240, 59, 59);
 }
+.descripcion {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+    color: rgb(72, 72, 72);
+    width: 500px;
+}
+.agregar-random-article-to-card-btn-container {
+    background-color: rgb(0, 0, 135);
+    width: fit-content;
+    margin-top: 1rem;
+}
+.agregar-random-article-to-card-btn-container button {
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    background: none;
+    padding: 0.5rem;
+}
+.agregar-random-article-to-card-btn-container button:hover{
+    cursor: pointer;
+}
+.mycontainer img{
+    width: 500px;
+}
+@media (width < 600px) {
+    .mycontainer img{
+        width: 300px;
+    }
+    .descripcion {
+        width: 300px;
+    }
+}
+
