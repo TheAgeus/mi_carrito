@@ -31,7 +31,7 @@
                         <img src="{{env('APP_URL') . '/storage/images/productos/' . $item->producto->img_path}}" alt="">
                     </div>
                     <div class="item_text_container">
-                        <div class="titulo">Artículo: {{ $item->productoName }} </div>
+                        <div class="titulo">Artículo: <br>{{ $item->productoName }} </div>
                         <div class="text_item">Cantidad: {{ $item->cantidad }}</div>
                         <div class="text_item">Precio individual: <strong class="monto">${{ $item->precio }}</strong></div>
                         <div class="text_item">Total del artículo: <strong class="monto">${{ $item->precio * $item->cantidad}}</strong> </div>
@@ -48,14 +48,15 @@
         padding-block: 1rem;
     }
     .encabezado{
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
     .monto{
         font-weight: bold;
         font-size: 1rem;
     }
     .item {
-        margin-block: 0.5rem;
+        margin-block: 1rem;
+        padding-block: 1rem;
     }
 
     .item_card{
@@ -64,7 +65,6 @@
         border-bottom: 1px solid black;
     }
     .item_img_container {
-        width: 50%;
         display: flex;
         justify-content: start;
         align-items:center;
@@ -78,15 +78,23 @@
         padding: 1rem;
     }
     .titulo {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         font-weight: bold;
         margin-bottom: 1rem;
     }
     .text_item {
-        font-size: 0.8rem; 
+        font-size: 1rem; 
     }
     .monto {
         font-size: 1rem;
+    }
+
+    @media (width > 500px) {
+        .item_text_container {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
     }
 </style>
 

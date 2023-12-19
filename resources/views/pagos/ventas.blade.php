@@ -19,6 +19,9 @@
                 <b>Articulos:</b>  {{ $pago->cantidad_total() }}
             </span>
             <span>
+                <b>Usuario:</b>  {{ $pago->id_usuario }}
+            </span>
+            <span>
                 <b>Estado:</b>  {{ $pago->estado }}
             </span>
         </div>
