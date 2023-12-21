@@ -1,63 +1,151 @@
 @extends('layouts.main-layout')
 @section('content')
 
-<div class="full_container">
-    <h1>Mis compras</h1>
-    @foreach($pagos as $pago)
-    <div class="compra">
-        <div class="info">
-            <span>
-                <b>Pagado:</b>  <br> ${{ $pago->monto }}
-            </span>
-            <span>
-                <b>Fecha:</b>  <br> {{ $pago->fecha() }}
-            </span>
-            <span>
-                <b>Dirección:</b>  <br> {{ $pago->address }}
-            </span>
-            <span>
-                <b>Articulos:</b>  {{ $pago->cantidad_total() }}
-            </span>
-            <span>
-                <b>Estado:</b>  {{ $pago->estado }}
-            </span>
-        </div>
-        <span class="end">
-            <a href="/mis_compras/{{ $pago->id }}">Ver detalles...</a>
-        </span>
-        </div>
-    @endforeach
-</div>
+{{-- Aqui tengo $pagos para ver todas mis compras y "/mis_compras/{{ $pago->id }}" es la ruta para los detalles--}}
 
 <style>
-    h1 {
-        font-size: 1.5rem;
+
+    .mis_compras {
+        height: 100vh;
+        overflow-y: scroll;
     }
-    .full_container {
-        margin-inline: 5%; 
+
+    * {
+        font-family: Arial, Helvetica, sans-serif;
     }
-    .compra {
-        font-size: 0.8rem;
-        color: rgb(55, 55, 55);
+    .title {
+        padding-top: 2rem;
+        padding-inline: 4%;
+    }
+    .compra_container {
+        margin-inline: 3%;
+        padding-block: 2rem;
+        border-top: 1px solid black;
         display: flex;
-        padding: 1rem;
-        margin-bottom: 0.5rem;
-        background-color: rgb(247, 247, 255);
-    }
-    .info {
-        display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 1rem;
-        flex: 2;
     }
-    .info > * {
-        flex: 1;
+    .datos_container {
+        display: flex; 
+        gap: 2rem;
     }
-    .end {
-        flex: 1;
+    .dato {
+        font-size: 1.2rem;
+    }
+    .ver_detalles_btn{
+        background-color: rgb(0, 58, 113);
+        color: white;
+        text-decoration: none;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        width: fit-content;
+        
+    }
+    .datos_container_first_column {
         display: flex;
-        justify-content: end;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .datos_container_second_column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .total {
+        text-align: end;
+    }
+    @media (width > 500px) {
+        .datos_container_first_column {
+            flex: 1;
+        }
+        .datos_container_second_column {
+            flex: 3;
+        }
+        .detalles_btn_container {
+            margin-top: 2.5rem;
+        }
+    }
+    @media (width < 500px) {
+        
+        .title {
+            font-size: 1.8rem;
+        }
+        .datos_container {
+            flex-direction: row;
+            gap: 1rem;
+        }
+        .dato {
+            font-size: 1rem;
+        }
+        .ver_detalles_btn{
+            font-size: 0.8rem;
+            padding-inline: 1rem;
+            padding-block: 0.5rem; 
+            word-wrap:unset;
+        }
+        .total {
+            margin-top: 3rem;
+        }
+        .detalles_btn_container {
+            margin-top: 2rem;
+        }
     }
 </style>
+
+<div class="full_container">
+    <h1 class="title">Mis Compras</h1>
+
+    {{-- Mis compras --}}
+    <div class="mis_compras">
+        {{-- Cada compra --}}
+        <?php $compra_no = 0 ?>
+        @foreach($pagos as $pago)
+            <?php $compra_no = $compra_no + 1; ?>
+            <div class="compra_container">
+                <div class="datos_container">
+
+                    <div class="datos_container_first_column">
+                        <div class="dato">
+                            <b>Compra no:</b>
+                            <i>{{$compra_no}}</i>
+                        </div>
+                        <div class="dato">
+                            <b>Fecha:</b>
+                            <i>{{$pago->fecha()}}</i>
+                        </div>
+                        <div class="dato detalles_btn_container">
+                            <a class="ver_detalles_btn" href="/mis_compras/{{ $pago->id }}">Detalles</a>
+                        </div>
+                    </div>
+
+                    <div class="datos_container_second_column">
+                        <div class="dato">
+                            <b>Dirección del comprador:</b>
+                            <i>{{$pago->address}}</i>
+                        </div>
+                        <div class="dato">
+                            <b>Articulos Comprados:</b>
+                            <i>{{$pago->cantidad_total()}}</i>
+                        </div>
+                        <div class="dato">
+                            <b>Estado del pedido:</b>
+                            <i>{{$pago->estado}}</i>
+                        </div>
+                        <div class="dato total">
+                            <i>
+                                <b>
+                                    TOTAL:
+                                    $ {{$pago->monto * $pago->cantidad_total()}}
+                                </b>
+                            </i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+</div>
 
 @endsection
