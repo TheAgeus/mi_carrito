@@ -106,7 +106,7 @@
 
                     <div class="datos_container_first_column">
                         <div class="dato">
-                            <b>Compra no:</b>
+                            <b>Compra:</b>
                             <i>{{$compra_no}}</i>
                         </div>
                         <div class="dato">

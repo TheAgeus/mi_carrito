@@ -177,7 +177,27 @@ class PaymentController extends Controller
 
     public function mi_compra($id)
     {
+        // auth user id
+        $user_id = Auth()->user()->id;
+
         $compra = Pago::find($id);
+        
+        if($compra != null) { // Si existe esa compra
+
+            $compra_user_id = $compra->id_usuario;
+
+            if(Auth()->user()->role == "user") { // Si el usuario logueado usuario normal, o sea, no es admin o inventarios
+
+                if($user_id != $compra_user_id) { // Si la compra no es de ese usuario
+                     
+                    return redirect()->back()->with('error', 'Esa compra no es tuya');  
+                }
+            }
+        }
+        else {
+            return redirect()->back()->with('error', 'Esa existe esa compra'); 
+        }
+            
         $items = $compra->items;
 
         return view('pagos.mi_compra', [ 
