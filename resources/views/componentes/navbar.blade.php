@@ -1,9 +1,13 @@
 <link rel="stylesheet" href="{{asset('css/navbar/navbar.css') }}">
 
+<style>
+
+</style>
+
 <div class="nav_container">
     <div class="primer-navbar">
         <div class="logo_container">
-            MI CARRITO
+            <a href="/">A LA VANGUARDIA</a>
         </div>
     
         <div class="search_bar">

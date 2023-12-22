@@ -4,15 +4,14 @@
 
 
 <style>
-
+    .no_bold {
+        font-family: AmazonEmberRg, Arial, sans-serif;
+    }
     .mis_compras {
         height: 100vh;
         overflow-y: scroll;
     }
 
-    * {
-        font-family: Arial, Helvetica, sans-serif;
-    }
     .title {
         padding-top: 2rem;
         padding-inline: 4%;
@@ -141,11 +140,11 @@
                     <div class="datos_container_first_column">
                         <div class="dato">
                             <b>Compra:</b>
-                            <i>{{$compra_no}}</i>
+                            <span class="no_bold">{{$compra_no}}</span>
                         </div>
                         <div class="dato">
                             <b>Fecha:</b>
-                            <i>{{$pago->fecha()}}</i>
+                            <span class="no_bold">{{$pago->fecha()}}</span>
                         </div>
                         <div class="dato detalles_btn_container">
                             <a class="ver_detalles_btn" href="/mis_compras/{{ $pago->id }}">Detalles</a>
@@ -155,18 +154,18 @@
                     <div class="datos_container_second_column">
                         <div class="dato">
                             <b>Dirección del comprador:</b>
-                            <i>{{$pago->address}}</i>
+                            <span class="no_bold">{{$pago->address}}</span>
                         </div>
                         <div class="dato">
                             <b>Articulos Comprados:</b>
-                            <i>{{$pago->cantidad_total()}}</i>
+                            <span class="no_bold">{{$pago->cantidad_total()}}</span>
                         </div>
                         <div class="dato">
                             <b>Estado del pedido:</b>
-                            <i>{{$pago->estado}}</i>
+                            <span class="no_bold">{{$pago->estado}}</span>
                         </div>
                         <div class="dato">
-                            <b>Usuario que compró:</b>  {{ $pago->id_usuario }}
+                            <b>Usuario que compró:</b> <span class="no_bold">{{ $pago->id_usuario }}</span> 
                         </div>
                         <div class="dato">
                             <form class="estado" method="POST" action="/ventas_cambiar_estado">

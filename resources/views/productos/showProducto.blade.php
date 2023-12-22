@@ -23,7 +23,7 @@
                 {{$producto->stock}} piezas
             </div>
             <div class="mycontainer descripcion">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid obcaecati ratione facilis in, quisquam est ullam temporibus, nihil odit ad enim. Quaerat exercitationem explicabo nesciunt velit mollitia autem modi odio.
+                {{$producto->descripcion}}
             </div>
             <div class="random-article-container">
 

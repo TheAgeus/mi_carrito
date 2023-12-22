@@ -1,3 +1,32 @@
+<style>
+    @font-face {
+        font-family: 'AmazonEmberLt';
+        src: url('/css/fonts/AmazonEmber_Lt.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'AmazonEmberBd';
+        src: url('/css/fonts/AmazonEmber_Bd.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'AmazonEmberRg';
+        src: url('/css/fonts/AmazonEmber_Rg.ttf');
+        font-weight: normal;
+        font-style: normal;
+    }
+    *|* {
+        font-family: AmazonEmberRg, Arial, sans-serif !important;
+    }
+    .text_area {
+        width: 100%;
+        resize: none;
+        height: 5rem;
+    }
+</style>
+
 <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -58,6 +87,13 @@
                             @endforeach
                     </select>
                 </div>
+
+                @error('descripcion') <span style="color: red"> {{ $message }} </span> @enderror
+                <h6>Descripcion:</h6>
+
+                <textarea class="text_area" wire:model="descripcion" aria-label="Default select example">
+                </textarea>
+
 
                 @if ($img)
                     <img src="{{$img->temporaryUrl()}}" class="img-fluid" alt="">

@@ -35,7 +35,7 @@ class Index extends Component
 
     public function save()
     {
-
+        
         $this->validate();
 
         \App\Models\Categoria::create([
@@ -62,7 +62,7 @@ class Index extends Component
             $this->validate();
         }
 
-        if ($this->img != NULL) {
+        if ($this->img != NULL and $this->name != Null) { // Si se quiere actualizar ambas cosas
             
             $categoria->update([
                 'name' => $this->name,
@@ -72,10 +72,18 @@ class Index extends Component
             // Guardas la imagen
             Storage::disk('public')->putFileAs('/images/categorias', $this->img, $id . '.' . $this->img->extension());
         }
-        else {
+        else if($this->name != Null) { // Si se quiere actualizar solo el nombre
             $update = Categoria::find($id)->update([
                 'name' => $this->name,
             ]);
+        }
+        elseif($this->img != NULL) { // Si se quiere actualizar solo la imagen
+            $categoria->update([
+                'img_path' => $id . '.' . $this->img->extension()
+            ]);
+           
+            // Guardas la imagen
+            Storage::disk('public')->putFileAs('/images/categorias', $this->img, $id . '.' . $this->img->extension());
         }
 
         

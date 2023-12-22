@@ -31,6 +31,7 @@
     flex-direction: column;
     flex: 1;
     width: calc(100% / 5);
+    max-width: 300px;
 }
 .random-article-img-container {
     width: 95%;
@@ -48,6 +49,7 @@
     overflow: hidden;
     margin-inline: auto;
     width: 90%;
+    max-width: 300px;
 }
 
 .agregar-random-article-to-card-btn-container {

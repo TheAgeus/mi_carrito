@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('proveedor');
             $table->float('precio_proveedor');
             $table->string('img_path')->nullable()->default('Question-mark.jpg');
+            $table->text('descripcion');
             $table->timestamps();
 
             $table->foreign('usuario_id')->references('id')->on('users')->nullOnDelete();

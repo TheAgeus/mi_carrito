@@ -25,7 +25,6 @@
         .login-form-container form input[type="text"], .login-form-container form input[type="password"] {
             all: unset;
             border: 1px solid rgba(0, 0, 146, 0.1);
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 0.8rem;
             padding-block: 1rem;
             padding-inline: 0.8rem;

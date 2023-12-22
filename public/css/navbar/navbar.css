@@ -1,3 +1,26 @@
+@font-face {
+    font-family: 'AmazonEmberLt';
+    src: url('/css/fonts/AmazonEmber_Lt.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AmazonEmberBd';
+    src: url('/css/fonts/AmazonEmber_Bd.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AmazonEmberRg';
+    src: url('/css/fonts/AmazonEmber_Rg.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*|* {
+    font-family: AmazonEmberBd, Arial, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -13,7 +36,10 @@ body {
     font-weight: bold;
     padding-block: 0.25rem;
 }
-
+.logo_container a{
+    text-decoration: none;
+    color: white;
+}
 .logo_container > img{
     height: 4rem;
     padding-inline: 1rem;

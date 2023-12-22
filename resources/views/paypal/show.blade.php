@@ -60,7 +60,7 @@
 
 
    
-    <script src="https://www.paypal.com/sdk/js?client-id=ASRylTwsN8rQTGb1eekEovs-my9xQgJ3EpjWu-OA2p5Y2oK28dkiq2niKAHfv4Dkv7T74e-UkIN49hj6&currency=MXN&disable-funding=credit,card"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcrrNWlr9S706dWEFmBQgNlipPtmh2NzvsjSYYcn6cdTBWXrkgdUf606y4Pesz1Q8facnSgCXHSAn26l&currency=MXN&disable-funding=credit,card"></script>
     <script>
         window.paypal
             .Buttons({

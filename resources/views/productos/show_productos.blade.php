@@ -1,6 +1,11 @@
 @extends('layouts.main-layout')
 @section('content')
 
+
+
+
+
+
 <div class="container">
 
     <link rel="stylesheet" href="{{asset('css/ShowCategoria/show-categoria.css') }}">

@@ -33,6 +33,7 @@ class Index extends Component
     public $codigo_proveedor;
     public $proveedor;
     public $precio_proveedor;
+    public $descripcion;
 
     public $edit_name;
     public $edit_precio_mx;
@@ -44,6 +45,7 @@ class Index extends Component
     public $edit_codigo_proveedor;
     public $edit_proveedor;
     public $edit_precio_proveedor;
+    public $edit_descripcion;
 
     public $producto_id;
 
@@ -60,8 +62,8 @@ class Index extends Component
         'categoria_id' => 'required',
         'codigo_proveedor' => 'required',
         'proveedor' => 'required',
-        'precio_proveedor' => 'required'
-        
+        'precio_proveedor' => 'required',
+        'descripcion' => 'required',
     ];
 
     protected $messages = [
@@ -74,7 +76,8 @@ class Index extends Component
         'categoria_id.required' => 'Seleccione una categoría',
         'codigo_proveedor.required' => 'Escriba un código del proveedor',
         'proveedor.required' => 'Escriba un proveedor',
-        'precio_proveedor' => 'Escriba un precio de proveedor'
+        'precio_proveedor.required' => 'Escriba un precio de proveedor',
+        'descripcion.required' => 'Escriba una descripcion',
     ];
 
 
@@ -99,6 +102,7 @@ class Index extends Component
         $this->edit_precio_proveedor = $producto->precio_proveedor;
         $this->edit_categoria_id = $producto->categoria_id;
         $this->edit_img_old = $producto->img_path;
+        $this->edit_descripcion = $producto->descripcion;
     }
 
     public function update()
@@ -132,6 +136,7 @@ class Index extends Component
             'proveedor' => $this->edit_proveedor,
             'precio_proveedor' => $this->edit_precio_proveedor,
             'img_path' => $img_name,
+            'descripcion' => $this->edit_descripcion,
         ]);
 
         session()->flash('message', 'Producto editado correctamente.');
@@ -155,6 +160,7 @@ class Index extends Component
             'codigo_proveedor' => $this->codigo_proveedor,
             'proveedor' => $this->proveedor,
             'precio_proveedor' => $this->precio_proveedor,
+            'descripcion' => $this->descripcion,
         ]);
 
         // Cambias el nombre de la imagen porque no se puede obtener el id antes de crear el producto

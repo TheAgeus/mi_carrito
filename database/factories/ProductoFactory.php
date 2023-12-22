@@ -25,7 +25,8 @@ class ProductoFactory extends Factory
             'usuario_id'=>fake()->numberBetween($min = 2, $max = 3),
             'codigo_proveedor' => Str::random(5),
             'proveedor' => fake()->company(),
-            'precio_proveedor' => fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20.00)
+            'precio_proveedor' => fake()->randomFloat($nbMaxDecimals = 2, $min = 10.00, $max = 20.00),
+            'descripcion' => Str::random(255),
         ];
     }
 }

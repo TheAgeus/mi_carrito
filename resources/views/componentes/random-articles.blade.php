@@ -14,6 +14,8 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        max-width: 300px;
+        justify-content: space-between;
     }
     .producto-nonSlider-card-img{
         width: 100%;
@@ -21,13 +23,15 @@
         justify-content: center;
         padding-top: 3rem;
         padding-bottom: 1rem;
+        margin-block: auto; 
     }
     .producto-nonSlider-card-img img{
-        width: 90%
+        width: 90%;
+        max-width: 300px;
+        max-height: 300px;
     }
     .producto-nonSlider-card-text{
         padding-inline: 1rem;
-        border-top: 1px solid rgba(0, 0, 0, 0.4);
         padding-block: 1rem;
     }
     .producto-nonSlider-card-text .precio-producto{

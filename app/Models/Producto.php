@@ -20,6 +20,7 @@ class Producto extends Model
         'precio_proveedor',
         'categoria_id',
         'img_path',
+        'descripcion',
     ];
 
     public function average_score()
